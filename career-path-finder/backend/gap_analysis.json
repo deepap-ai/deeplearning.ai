@@ -1,0 +1,42 @@
+{
+  "deltas": {
+    "Systems Thinking": 0.13,
+    "Backend Architecture": 0.25,
+    "C++": 0.55,
+    "Python": 0.1,
+    "Reinforcement Learning": 0.6,
+    "Multi-Agent Systems": 0.4,
+    "Prompt Decomposition": 0.15
+  },
+  "upskilling_tasks": {
+    "Systems Thinking": {
+      "action": "Curated Module",
+      "details": "Advanced Systems Thinking Workshop"
+    },
+    "Backend Architecture": {
+      "action": "Curated Module",
+      "details": "Advanced Backend Architecture Workshop"
+    },
+    "C++": {
+      "action": "Complete Custom Architecture Prompt",
+      "details": "Build a zero-allocation memory pool in C++ for the simulated game engine."
+    },
+    "Python": {
+      "action": "Curated Module",
+      "details": "Advanced Python Workshop"
+    },
+    "Reinforcement Learning": {
+      "action": "Curated Module",
+      "details": "Advanced Reinforcement Learning Workshop"
+    },
+    "Multi-Agent Systems": {
+      "action": "Micro-credential Assignment",
+      "details": "Implement a 2-agent negotiation simulation using AutoGen."
+    },
+    "Prompt Decomposition": {
+      "action": "Resolve targeted GitHub issue in LangChain repository",
+      "repo": "langchain-ai/langchain",
+      "issue": "#1452: Enhance recursive prompt splitting"
+    }
+  }
+}
