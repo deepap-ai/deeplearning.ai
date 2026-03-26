@@ -1,5 +1,53 @@
 [
   {
+    "user_id": "bert",
+    "name": "Bert Clark",
+    "headline": "2nd-Year Culinary, Cal Poly SLO · Aspiring Chef",
+    "verified_skill_vector": {
+      "Knife Skills": {
+        "name": "Knife Skills",
+        "intensity": 0.75,
+        "provenance": "Practical Exam"
+      },
+      "Culinary Techniques": {
+        "name": "Culinary Techniques",
+        "intensity": 0.70,
+        "provenance": "Transcript, Practical"
+      },
+      "Food Chemistry": {
+        "name": "Food Chemistry",
+        "intensity": 0.65,
+        "provenance": "Transcript"
+      },
+      "HACCP Standards": {
+        "name": "HACCP Standards",
+        "intensity": 0.72,
+        "provenance": "Transcript, Pilot Plant"
+      },
+      "Sensory Evaluation": {
+        "name": "Sensory Evaluation",
+        "intensity": 0.60,
+        "provenance": "Transcript"
+      },
+      "Cost Management": {
+        "name": "Cost Management",
+        "intensity": 0.55,
+        "provenance": "Transcript"
+      },
+      "Food Processing": {
+        "name": "Food Processing",
+        "intensity": 0.68,
+        "provenance": "Pilot Plant, Creamery"
+      },
+      "Farm-to-Table Sourcing": {
+        "name": "Farm-to-Table Sourcing",
+        "intensity": 0.50,
+        "provenance": "Coursework, Local Farms"
+      }
+    },
+    "last_synced": "2026-03-26 14:00:00"
+  },
+  {
     "user_id": "alex",
     "name": "Alex Chen",
     "headline": "8th Grade Prodigy",
@@ -147,20 +195,50 @@
   {
     "user_id": "maya",
     "name": "Maya Patel",
-    "headline": "11th Grader",
+    "headline": "11th Grade, Palo Alto High School",
     "verified_skill_vector": {
       "Python": {
         "name": "Python",
-        "intensity": 0.8,
+        "intensity": 0.70,
         "provenance": "GitHub Oracle"
       },
       "Agent Stewardship": {
         "name": "Agent Stewardship",
-        "intensity": 0.7,
+        "intensity": 0.55,
         "provenance": "Dual Enrollment CC"
+      },
+      "Mathematics": {
+        "name": "Mathematics",
+        "intensity": 0.80,
+        "provenance": "Transcript"
+      },
+      "Academic Writing": {
+        "name": "Academic Writing",
+        "intensity": 0.75,
+        "provenance": "Transcript"
+      },
+      "Communication": {
+        "name": "Communication",
+        "intensity": 0.72,
+        "provenance": "Transcript, The Campanile"
+      },
+      "Scientific Reasoning": {
+        "name": "Scientific Reasoning",
+        "intensity": 0.65,
+        "provenance": "Transcript"
+      },
+      "Leadership": {
+        "name": "Leadership",
+        "intensity": 0.60,
+        "provenance": "Extracurriculars"
+      },
+      "Computational Thinking": {
+        "name": "Computational Thinking",
+        "intensity": 0.68,
+        "provenance": "GitHub, Transcript"
       }
     },
-    "last_synced": "2026-02-26 18:02:52.341540"
+    "last_synced": "2026-03-26 14:00:00"
   },
   {
     "user_id": "user_53a543fc",

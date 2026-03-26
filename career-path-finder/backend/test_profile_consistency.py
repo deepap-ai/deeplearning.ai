@@ -760,3 +760,523 @@ class TestNavigationRouting:
                 f"persona file at personas/{pid}.json. The pathing engine will "
                 f"silently fall back to another persona, which causes data mismatches."
             )
+
+
+# ===========================================================================
+# TEST GROUP 7: Candidate Identity Verification Across Pages
+# ===========================================================================
+
+@pytest.mark.skipif(
+    not _server_is_running(),
+    reason="Backend server not running on localhost:8000"
+)
+class TestCandidateIdentity:
+    """
+    Verify that each page/endpoint returns data for the CORRECT candidate,
+    not a different person's data. Tests that navigating to a specific
+    candidate's page actually loads that candidate's information.
+    """
+
+    PERSONA_IDS = ["alex", "sophia"]
+
+    def test_profile_api_returns_matching_candidate(self):
+        """
+        GET /api/profile/:id must return persona_info.name that matches
+        the candidate's actual name (from persona JSON or candidates.json).
+        """
+        for pid in self.PERSONA_IDS:
+            persona_json = load_persona_json(pid)
+            if not persona_json:
+                continue
+
+            resp = requests.get(f"{GPS_BASE}/api/profile/{pid}", timeout=5)
+            assert resp.status_code == 200, (
+                f"/api/profile/{pid} returned {resp.status_code}"
+            )
+
+            data = resp.json()
+            api_name = data.get("persona_info", {}).get("name", "")
+            expected_name = persona_json.get("name", "")
+
+            assert api_name == expected_name, (
+                f"IDENTITY ERROR on /api/profile/{pid}: API returned name "
+                f"'{api_name}' but expected '{expected_name}' from persona JSON"
+            )
+
+    def test_profile_api_returns_matching_school(self):
+        """
+        GET /api/profile/:id must return persona_info.school matching the
+        persona JSON. Catches the previously hardcoded Stanford issue.
+        """
+        for pid in self.PERSONA_IDS:
+            persona_json = load_persona_json(pid)
+            if not persona_json:
+                continue
+
+            resp = requests.get(f"{GPS_BASE}/api/profile/{pid}", timeout=5)
+            if resp.status_code != 200:
+                continue
+
+            api_school = resp.json().get("persona_info", {}).get("school", "")
+            expected_school = persona_json.get("school", "")
+
+            assert api_school == expected_school, (
+                f"IDENTITY ERROR on /api/profile/{pid}: API returned school "
+                f"'{api_school}' but expected '{expected_school}'"
+            )
+
+    def test_persona_api_identity_matches_json(self):
+        """
+        GET /api/persona/:id must return the same identity fields
+        (name, school, year, type) as the persona JSON file.
+        """
+        for pid in self.PERSONA_IDS:
+            persona_json = load_persona_json(pid)
+            if not persona_json:
+                continue
+
+            resp = requests.get(f"{GPS_BASE}/api/persona/{pid}", timeout=5)
+            assert resp.status_code == 200
+
+            api_data = resp.json()
+            for field in ["name", "school", "year"]:
+                assert api_data.get(field) == persona_json.get(field), (
+                    f"IDENTITY ERROR on /api/persona/{pid}: "
+                    f"field '{field}' is '{api_data.get(field)}' but "
+                    f"expected '{persona_json.get(field)}'"
+                )
+
+    def test_routes_api_returns_correct_persona_skills(self):
+        """
+        GET /api/persona/:id/routes must return current_skills that match
+        the persona JSON. Ensures navigate page shows the right person's skills.
+        """
+        for pid in self.PERSONA_IDS:
+            persona_json = load_persona_json(pid)
+            if not persona_json:
+                continue
+
+            resp = requests.get(f"{GPS_BASE}/api/persona/{pid}/routes", timeout=5)
+            if resp.status_code != 200:
+                continue
+
+            api_skills = set(resp.json().get("current_skills", {}).keys())
+            json_skills = set(persona_json.get("current_skills", {}).keys())
+
+            assert api_skills == json_skills, (
+                f"SKILL IDENTITY MISMATCH on /api/persona/{pid}/routes: "
+                f"API has skills {api_skills - json_skills} extra, "
+                f"missing {json_skills - api_skills}"
+            )
+
+    def test_routes_api_returns_correct_target_role(self):
+        """
+        GET /api/persona/:id/routes must return the correct target_role
+        from the persona JSON (default, without query override).
+        """
+        for pid in self.PERSONA_IDS:
+            persona_json = load_persona_json(pid)
+            if not persona_json:
+                continue
+
+            resp = requests.get(f"{GPS_BASE}/api/persona/{pid}/routes", timeout=5)
+            if resp.status_code != 200:
+                continue
+
+            api_target = resp.json().get("target_role", "")
+            expected_target = persona_json.get("target_role", {}).get("title", "")
+
+            assert api_target == expected_target, (
+                f"TARGET ROLE IDENTITY ERROR on /api/persona/{pid}/routes: "
+                f"API returned '{api_target}' but expected '{expected_target}'"
+            )
+
+    def test_cross_page_identity_profile_vs_navigate(self):
+        """
+        The name shown on /api/profile/:id (used by CandidateProfilePage)
+        must match the name shown by /api/persona/:id (used by NavigateDashboard).
+        """
+        for pid in self.PERSONA_IDS:
+            profile_resp = requests.get(f"{GPS_BASE}/api/profile/{pid}", timeout=5)
+            persona_resp = requests.get(f"{GPS_BASE}/api/persona/{pid}", timeout=5)
+
+            if profile_resp.status_code != 200 or persona_resp.status_code != 200:
+                continue
+
+            profile_name = profile_resp.json().get("persona_info", {}).get("name", "")
+            persona_name = persona_resp.json().get("name", "")
+
+            assert profile_name == persona_name, (
+                f"CROSS-PAGE IDENTITY ERROR for '{pid}': "
+                f"profile page shows '{profile_name}' but navigate page shows "
+                f"'{persona_name}'"
+            )
+
+    def test_no_cross_contamination_between_personas(self):
+        """
+        Verify that requesting one persona's data doesn't accidentally
+        return another persona's data. Each persona must have unique names
+        and non-overlapping skill sets.
+        """
+        names = {}
+        for pid in self.PERSONA_IDS:
+            resp = requests.get(f"{GPS_BASE}/api/persona/{pid}", timeout=5)
+            if resp.status_code != 200:
+                continue
+
+            data = resp.json()
+            name = data.get("name", "")
+
+            # Name should not duplicate another persona
+            if name in names:
+                pytest.fail(
+                    f"CROSS-CONTAMINATION: persona '{pid}' returned name "
+                    f"'{name}' which was already returned for persona "
+                    f"'{names[name]}'"
+                )
+            names[name] = pid
+
+
+# ===========================================================================
+# TEST GROUP 8: Gap Analysis Correctness
+# ===========================================================================
+
+@pytest.mark.skipif(
+    not _server_is_running(),
+    reason="Backend server not running on localhost:8000"
+)
+class TestGapAnalysisCorrectness:
+    """
+    Verify that the gap analysis returns domain-appropriate results
+    for each persona, not stale/generic tech fallback data.
+    """
+
+    def test_sophia_gap_analysis_returns_pharmacy_gaps(self):
+        """
+        Sophia's gap analysis (CVS Pharmacist target) must return
+        pharmacy-relevant gaps, not generic tech gaps.
+        """
+        persona = load_persona_json("sophia")
+        assert persona is not None
+
+        current = persona["current_skills"]
+        target = persona["target_role"]["required_skills"]
+
+        resp = requests.post(
+            f"{GPS_BASE}/api/gap-analysis",
+            json={"candidate_vector": current, "jd_vector": target},
+            timeout=5,
+        )
+        assert resp.status_code == 200, (
+            f"Gap analysis returned {resp.status_code}"
+        )
+
+        data = resp.json()
+        deltas = data.get("deltas", {})
+        tasks = data.get("upskilling_tasks", {})
+
+        # Sophia MUST have gaps in these pharmacy skills
+        expected_gaps = {"Pharmacology", "Patient Interaction", "Clinical Rotation Hours", "PharmD Credential"}
+        actual_gaps = set(deltas.keys())
+
+        missing = expected_gaps - actual_gaps
+        assert not missing, (
+            f"MISSING PHARMACY GAPS: Expected gaps in {missing} but got {actual_gaps}"
+        )
+
+    def test_sophia_gap_analysis_has_pharmacy_recommendations(self):
+        """
+        Sophia's upskilling tasks must contain pharmacy-specific actions,
+        not generic 'Advanced X Workshop' fallback.
+        """
+        persona = load_persona_json("sophia")
+        assert persona is not None
+
+        resp = requests.post(
+            f"{GPS_BASE}/api/gap-analysis",
+            json={
+                "candidate_vector": persona["current_skills"],
+                "jd_vector": persona["target_role"]["required_skills"],
+            },
+            timeout=5,
+        )
+        assert resp.status_code == 200
+
+        tasks = resp.json().get("upskilling_tasks", {})
+
+        # Check that key pharmacy tasks are NOT the generic fallback
+        for skill in ["Pharmacology", "Clinical Rotation Hours", "PharmD Credential"]:
+            if skill in tasks:
+                action = tasks[skill].get("action", "")
+                details = tasks[skill].get("details", "")
+                assert "Advanced" not in action or "Workshop" not in action, (
+                    f"GENERIC FALLBACK for '{skill}': got '{action}' — "
+                    f"expected pharmacy-specific recommendation"
+                )
+                assert details, (
+                    f"EMPTY RECOMMENDATION for '{skill}': upskilling task "
+                    f"has no details"
+                )
+
+    def test_alex_gap_analysis_returns_tech_gaps(self):
+        """
+        Alex's gap analysis (AI-Native Founder target) should return
+        tech/leadership gaps, not pharmacy gaps.
+        """
+        persona = load_persona_json("alex")
+        assert persona is not None
+
+        resp = requests.post(
+            f"{GPS_BASE}/api/gap-analysis",
+            json={
+                "candidate_vector": persona["current_skills"],
+                "jd_vector": persona["target_role"]["required_skills"],
+            },
+            timeout=5,
+        )
+        assert resp.status_code == 200
+
+        deltas = resp.json().get("deltas", {})
+
+        # Alex should have gaps in leadership/business skills, NOT pharmacy
+        pharmacy_skills = {"Pharmacology", "Clinical Rotation Hours", "PharmD Credential"}
+        contamination = pharmacy_skills & set(deltas.keys())
+        assert not contamination, (
+            f"CROSS-CONTAMINATION: Alex's gap analysis contains pharmacy "
+            f"skills {contamination} — wrong persona's data being used"
+        )
+
+    def test_gap_deltas_are_positive(self):
+        """
+        All deltas returned by gap analysis must be positive (gaps where
+        candidate is deficient). The engine should not return negative
+        deltas (where candidate exceeds requirements).
+        """
+        for pid in ["alex", "sophia"]:
+            persona = load_persona_json(pid)
+            if not persona:
+                continue
+
+            resp = requests.post(
+                f"{GPS_BASE}/api/gap-analysis",
+                json={
+                    "candidate_vector": persona["current_skills"],
+                    "jd_vector": persona["target_role"]["required_skills"],
+                },
+                timeout=5,
+            )
+            if resp.status_code != 200:
+                continue
+
+            deltas = resp.json().get("deltas", {})
+            for skill, delta in deltas.items():
+                assert delta > 0, (
+                    f"NEGATIVE DELTA for '{pid}': skill '{skill}' has "
+                    f"delta={delta}, expected positive value"
+                )
+
+
+# ===========================================================================
+# TEST GROUP 9: Route-Aware Gap Analysis (per route, per persona)
+# ===========================================================================
+
+ALL_PERSONA_IDS = [
+    f.replace(".json", "")
+    for f in os.listdir(PERSONAS_DIR)
+    if f.endswith(".json")
+]
+
+@pytest.mark.skipif(
+    not _server_is_running(),
+    reason="Backend server not running on localhost:8000"
+)
+class TestRouteAwareGapAnalysis:
+    """
+    Verify that choosing different routes produces DIFFERENT gap analysis
+    results for each persona. This validates the frontend's route-aware
+    gap analysis logic: augmented_skills = current + route.skills_gained.
+    """
+
+    @pytest.mark.parametrize("pid", ALL_PERSONA_IDS)
+    def test_different_routes_produce_different_gaps(self, pid):
+        """
+        For each persona, simulate the gap analysis for each route by
+        accumulating skills_gained from the route's steps. Different routes
+        must yield different gap deltas.
+        """
+        persona = load_persona_json(pid)
+        assert persona is not None, f"Persona '{pid}' not found"
+
+        routes = persona.get("routes", [])
+        if len(routes) < 2:
+            pytest.skip(f"Persona '{pid}' has fewer than 2 routes")
+
+        target = persona["target_role"]["required_skills"]
+        gap_results = []
+
+        for route in routes:
+            # Simulate frontend logic: accumulate skills_gained from steps
+            augmented = dict(persona["current_skills"])
+            for step in route.get("steps", []):
+                for skill, gain in step.get("skills_gained", {}).items():
+                    augmented[skill] = min(1.0, augmented.get(skill, 0) + gain)
+
+            resp = requests.post(
+                f"{GPS_BASE}/api/gap-analysis",
+                json={"candidate_vector": augmented, "jd_vector": target},
+                timeout=5,
+            )
+            assert resp.status_code == 200, (
+                f"Gap analysis failed for '{pid}' route '{route.get('id')}'"
+            )
+            deltas = resp.json().get("deltas", {})
+            gap_results.append((route["id"], deltas))
+
+        # At least two routes should produce different gap sets
+        unique_gap_sets = set()
+        for route_id, deltas in gap_results:
+            # Create a hashable representation of the gap (skill set + rounded values)
+            gap_key = frozenset((k, round(v, 2)) for k, v in deltas.items())
+            unique_gap_sets.add(gap_key)
+
+        assert len(unique_gap_sets) > 1, (
+            f"ALL ROUTES SAME GAPS for '{pid}': routes "
+            f"{[r[0] for r in gap_results]} all produced identical gap analysis. "
+            f"The gap analysis is not route-aware."
+        )
+
+    @pytest.mark.parametrize("pid", ALL_PERSONA_IDS)
+    def test_route_skills_reduce_gaps(self, pid):
+        """
+        Choosing a route that trains specific skills should result in
+        fewer or smaller gaps compared to using raw current skills.
+        """
+        persona = load_persona_json(pid)
+        assert persona is not None
+
+        target = persona["target_role"]["required_skills"]
+
+        # Baseline: raw current skills
+        resp_raw = requests.post(
+            f"{GPS_BASE}/api/gap-analysis",
+            json={"candidate_vector": persona["current_skills"], "jd_vector": target},
+            timeout=5,
+        )
+        assert resp_raw.status_code == 200
+        raw_deltas = resp_raw.json().get("deltas", {})
+        raw_total_gap = sum(raw_deltas.values())
+
+        # For each route, augmented skills should produce ≤ total gap
+        for route in persona.get("routes", []):
+            augmented = dict(persona["current_skills"])
+            for step in route.get("steps", []):
+                for skill, gain in step.get("skills_gained", {}).items():
+                    augmented[skill] = min(1.0, augmented.get(skill, 0) + gain)
+
+            resp_aug = requests.post(
+                f"{GPS_BASE}/api/gap-analysis",
+                json={"candidate_vector": augmented, "jd_vector": target},
+                timeout=5,
+            )
+            assert resp_aug.status_code == 200
+            aug_deltas = resp_aug.json().get("deltas", {})
+            aug_total_gap = sum(aug_deltas.values())
+
+            assert aug_total_gap <= raw_total_gap + 0.01, (
+                f"ROUTE INCREASES GAPS for '{pid}' route '{route['id']}': "
+                f"raw total gap={raw_total_gap:.2f} but augmented gap={aug_total_gap:.2f}"
+            )
+
+    @pytest.mark.parametrize("pid", ALL_PERSONA_IDS)
+    def test_each_route_has_skills_gained(self, pid):
+        """
+        Every route must have at least one step with skills_gained,
+        otherwise the route-aware gap analysis has no effect.
+        """
+        persona = load_persona_json(pid)
+        assert persona is not None
+
+        for route in persona.get("routes", []):
+            total_gains = {}
+            for step in route.get("steps", []):
+                for skill, gain in step.get("skills_gained", {}).items():
+                    total_gains[skill] = total_gains.get(skill, 0) + gain
+
+            assert total_gains, (
+                f"EMPTY SKILLS_GAINED for '{pid}' route '{route['id']}': "
+                f"no steps provide any skill gains — gap analysis won't change"
+            )
+
+
+# ===========================================================================
+# TEST GROUP 10: Search Endpoint Verification
+# ===========================================================================
+
+@pytest.mark.skipif(
+    not _server_is_running(),
+    reason="Backend server not running on localhost:8000"
+)
+class TestSearchEndpoint:
+    """
+    Verify that the /api/recruit/search endpoint returns correct results
+    and that all personas with candidate entries are searchable.
+    """
+
+    def test_search_returns_results_for_all_personas(self):
+        """All personas with candidate entries should be findable by name."""
+        candidates = load_mock_candidates()
+        persona_ids = ALL_PERSONA_IDS
+
+        for pid in persona_ids:
+            persona = load_persona_json(pid)
+            if not persona:
+                continue
+
+            # Check if there's a candidate entry for this persona
+            has_candidate = any(
+                c.get("user_id") == pid for c in candidates
+            )
+            if not has_candidate:
+                continue
+
+            name = persona["name"]
+            first_name = name.split()[0]
+            resp = requests.get(
+                f"{GPS_BASE}/api/recruit/search?query={first_name}",
+                timeout=5,
+            )
+            assert resp.status_code == 200
+
+            results = resp.json().get("results", [])
+            found = any(name.lower() in r.get("name", "").lower() for r in results)
+            assert found, (
+                f"SEARCH MISS: persona '{pid}' (name: '{name}') not found "
+                f"when searching for '{first_name}'. Got {len(results)} results."
+            )
+
+    def test_search_bert_by_culinary_keywords(self):
+        """Bert should appear when searching for culinary-related terms."""
+        for keyword in ["culinary", "chef", "food"]:
+            resp = requests.get(
+                f"{GPS_BASE}/api/recruit/search?query={keyword}",
+                timeout=5,
+            )
+            assert resp.status_code == 200
+            results = resp.json().get("results", [])
+            bert_found = any("bert" in r.get("name", "").lower() for r in results)
+            assert bert_found, (
+                f"SEARCH MISS: Bert Clark not found when searching "
+                f"for '{keyword}'. Got {len(results)} results."
+            )
+
+    def test_search_empty_returns_all_candidates(self):
+        """Empty search should return all candidates."""
+        resp = requests.get(f"{GPS_BASE}/api/recruit/search?query=", timeout=5)
+        assert resp.status_code == 200
+        results = resp.json().get("results", [])
+        assert len(results) >= len(ALL_PERSONA_IDS), (
+            f"Empty search returned only {len(results)} results, "
+            f"expected at least {len(ALL_PERSONA_IDS)} personas"
+        )
+
+

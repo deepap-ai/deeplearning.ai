@@ -55,37 +55,6 @@ export default function NavigateDashboard() {
                 if (routes?.routes?.[0]) {
                     setActiveRouteId(routes.routes[0].id);
                 }
-                
-                // Run gap analysis dynamically
-                if (routes.current_skills && routes.target_skills) {
-                    runGapAnalysis(routes.current_skills, routes.target_skills)
-                        .then((gapResult: any) => {
-                            if (gapResult?.deltas) {
-                                const newGaps = Object.entries(gapResult.deltas).map(([skill, delta]: [string, any]) => {
-                                    let priority = 'Low';
-                                    if (delta >= 0.6) priority = 'Critical';
-                                    else if (delta >= 0.3) priority = 'Medium';
-                                    
-                                    const rec = gapResult.upskilling_tasks?.[skill] || {};
-                                    let actionType = 'Course';
-                                    if (rec.repo) actionType = 'GitHub';
-                                    else if (rec.action?.includes('Micro-credential')) actionType = 'Micro-credential';
-                                    
-                                    let actionText = rec.issue || rec.details || rec.action || 'Recommended upskilling for this gap.';
-                                    
-                                    return {
-                                        skill,
-                                        priority,
-                                        actionType,
-                                        actionText,
-                                        actionLink: rec.repo ? `https://github.com/${rec.repo}` : undefined
-                                    };
-                                });
-                                setGapItems(newGaps);
-                            }
-                        })
-                        .catch(err => console.warn('Gap analysis failed:', err));
-                }
 
                 // For the demo: immediately go to navigating so we don't get stuck on the ingestion screen
                 setPhase('navigating');
@@ -98,6 +67,55 @@ export default function NavigateDashboard() {
             setPhase('navigating');
         });
     }, [idToUse, location.search]);
+
+    // Re-run gap analysis whenever the selected route changes
+    useEffect(() => {
+        if (!routeData?.current_skills || !routeData?.target_skills) return;
+
+        // Find the active route and accumulate skills_gained from its steps
+        const activeRoute = routeData.routes?.find((r: any) => r.id === activeRouteId);
+        const augmentedSkills = { ...routeData.current_skills };
+
+        if (activeRoute?.steps) {
+            for (const step of activeRoute.steps) {
+                if (step.skills_gained) {
+                    for (const [skill, gain] of Object.entries(step.skills_gained)) {
+                        augmentedSkills[skill] = Math.min(1.0, (augmentedSkills[skill] || 0) + (gain as number));
+                    }
+                }
+            }
+        }
+
+        runGapAnalysis(augmentedSkills, routeData.target_skills)
+            .then((gapResult: any) => {
+                if (gapResult?.deltas) {
+                    const newGaps = Object.entries(gapResult.deltas).map(([skill, delta]: [string, any]) => {
+                        let priority = 'Low';
+                        if (delta >= 0.6) priority = 'Critical';
+                        else if (delta >= 0.3) priority = 'Medium';
+                        
+                        const rec = gapResult.upskilling_tasks?.[skill] || {};
+                        let actionType = 'Course';
+                        if (rec.repo) actionType = 'GitHub';
+                        else if (rec.action?.includes('Micro-credential')) actionType = 'Micro-credential';
+                        
+                        let actionText = rec.issue || rec.details || rec.action || 'Recommended upskilling for this gap.';
+                        
+                        return {
+                            skill,
+                            priority,
+                            actionType,
+                            actionText,
+                            actionLink: rec.repo ? `https://github.com/${rec.repo}` : undefined
+                        };
+                    });
+                    setGapItems(newGaps);
+                } else {
+                    setGapItems([]);
+                }
+            })
+            .catch(err => console.warn('Gap analysis failed:', err));
+    }, [activeRouteId, routeData]);
 
     const handleIngestionComplete = useCallback(() => {
         setPhase('navigating');

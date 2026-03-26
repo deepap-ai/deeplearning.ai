@@ -20,7 +20,7 @@ export default function RecruiterDashboard() {
         setIsLoading(true);
         try {
             // Note: In MVP, calling the database endpoint running locally
-            const res = await fetch(`http://localhost:8001/api/recruit/search?query=${encodeURIComponent(query)}`);
+            const res = await fetch(`http://localhost:8000/api/recruit/search?query=${encodeURIComponent(query)}`);
             if (res.ok) {
                 const data = await res.json();
                 setCandidates(data.results || []);
