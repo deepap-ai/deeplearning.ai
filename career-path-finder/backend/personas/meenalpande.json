@@ -1,0 +1,156 @@
+{
+    "persona_id": "meenalpande",
+    "name": "Meenal Pande",
+    "type": "professional",
+    "avatar_initials": "MP",
+    "school": "UC Berkeley",
+    "year": "Alumni (2024)",
+    "age": 24,
+    "ingestion_type": "github_scan",
+    "sources": [
+        {
+            "name": "GitHub",
+            "handle": "meenalp",
+            "repos": 45,
+            "top_languages": [
+                "Go",
+                "Python",
+                "TypeScript"
+            ]
+        },
+        {
+            "name": "LinkedIn",
+            "handle": "meenalpande",
+            "connections": "500+"
+        }
+    ],
+    "current_skills": {
+        "Python": 0.90,
+        "Go": 0.75,
+        "TypeScript": 0.80,
+        "System Design": 0.70,
+        "Algorithms": 0.90,
+        "Data Structures": 0.88,
+        "AWS": 0.75,
+        "Docker": 0.70,
+        "Kubernetes": 0.70,
+        "Backend Architecture": 0.40,
+        "Team Leadership": 0.75,
+        "Agile": 0.85
+    },
+    "target_role": {
+        "title": "Senior Backend Engineer",
+        "company": "Anthropic",
+        "required_skills": {
+            "Python": 0.95,
+            "Go": 0.90,
+            "System Design": 0.95,
+            "Backend Architecture": 0.85,
+            "Kubernetes": 0.80,
+            "Data Structures": 0.90,
+            "Algorithms": 0.90,
+            "Team Leadership": 0.85,
+            "AWS": 0.85
+        }
+    },
+    "routes": [
+        {
+            "id": "senior_backend",
+            "label": "Direct Path: Senior Backend Engineer",
+            "subtitle": "Leverage Consulting & Scale",
+            "icon": "building",
+            "steps": [
+                {
+                    "type": "experience",
+                    "title": "Open Source Contributions (e.g. Kubernetes, Go runtime)",
+                    "duration": "3 months",
+                    "skills_gained": {
+                        "Go": 0.10,
+                        "Kubernetes": 0.05,
+                        "Backend Architecture": 0.15
+                    },
+                    "year": "2026"
+                },
+                {
+                    "type": "experience",
+                    "title": "Deploy high-scale distributed system for freelance client",
+                    "duration": "6 months",
+                    "skills_gained": {
+                        "System Design": 0.15,
+                        "AWS": 0.10
+                    },
+                    "year": "2026"
+                },
+                {
+                    "type": "course",
+                    "title": "Advanced Distributed Systems Architecture (O'Reilly/Coursera)",
+                    "duration": "2 months",
+                    "skills_gained": {
+                        "Backend Architecture": 0.25,
+                        "System Design": 0.10
+                    },
+                    "year": "2026"
+                },
+                {
+                    "type": "role",
+                    "title": "Senior Backend Engineer at Anthropic",
+                    "salary": "$250,000/yr",
+                    "skills_gained": {
+                        "Team Leadership": 0.10
+                    },
+                    "year": "2027"
+                }
+            ],
+            "total_time": "12-18 months",
+            "total_cost": "$500",
+            "arrival_probability": 80
+        },
+        {
+            "id": "tech_lead",
+            "label": "Pivot to Tech Lead / Engineering Manager",
+            "subtitle": "Focus on Architecture & Leadership",
+            "icon": "users",
+            "steps": [
+                {
+                    "type": "experience",
+                    "title": "Scale freelance ops into a boutique dev agency",
+                    "duration": "12 months",
+                    "skills_gained": {
+                        "Team Leadership": 0.20,
+                        "Agile": 0.10,
+                        "System Design": 0.10
+                    },
+                    "year": "2026-2027"
+                },
+                {
+                    "type": "role",
+                    "title": "Tech Lead at a Series B Startup",
+                    "salary": "$180,000/yr",
+                    "skills_gained": {
+                        "Backend Architecture": 0.30,
+                        "AWS": 0.20,
+                        "System Design": 0.15
+                    },
+                    "year": "2027"
+                }
+            ],
+            "total_time": "1.5 - 2.5 years",
+            "total_cost": "$0",
+            "arrival_probability": 75
+        }
+    ],
+    "alternatives": [
+        {
+            "title": "Cloud Solutions Architect",
+            "company": "Amazon Web Services",
+            "match": 85,
+            "gap_summary": "Deepen AWS specific certifications and customer-facing presales skills."
+        },
+        {
+            "title": "Staff Software Engineer",
+            "company": "Stripe",
+            "match": 70,
+            "gap_summary": "Requires 3-5+ years of driving organization-wide architectural changes at scale."
+        }
+    ]
+}

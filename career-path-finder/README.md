@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# Sparc AI — Career GPS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **"Your GPS for Career Trajectories."**
 
-Currently, two official plugins are available:
+Sparc AI maps the optimal path from your current skills to your dream role. It decomposes academic transcripts, GitHub repos, and competition records into atomic skill nodes, then computes multi-path career routes through a Skills Space — like Waze, but for careers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo Personas
 
-## React Compiler
+The platform ships with two golden-path personas:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Sophia Martinez** — 2nd-year Biotech student at UC Davis → CVS Pharmacist. Transcript-based ingestion with 12 courses, 3 career routes (Direct Clinical, Low Debt, Lateral Pivot), and 3 alternative destinations.
+- **Alex Torres** — 14-year-old 8th grader → AI-Native Founder by 2034. GitHub/HackerRank-based ingestion with 2 career routes (Solo Founder, Enterprise Architect) and 2 alternatives.
 
-## Expanding the ESLint configuration
+## Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Layer | Description | Status |
+|-------|-------------|--------|
+| Data Ingestion | Transcript parser, GitHub/HackerRank scanners | Demo-ready with animated UX |
+| Skill Decomposition | Courses/repos → atomic skill nodes on [0, 1] scale | Functional |
+| GPS Pathing Engine | Multi-path route computation (Fastest, Low Debt, Maximize Degree) | Pre-computed routes |
+| Proximity Map | Dual-cluster force graph: current skills vs target requirements | Functional (react-force-graph-2d) |
+| Route Timeline | Step-by-step path visualization with costs, durations, skill gains | Functional |
+| Alternative Destinations | Lateral career matches with match percentages | Functional |
+| Gap Analysis Engine | Delta calculation: JD vector − Candidate vector | Functional |
+| UX/UI | React/Tailwind with Framer Motion animations | Built |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Quick Start
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Frontend
+```bash
+npm install
+npm run dev          # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Backend
+```bash
+cd backend/
+pip install -r requirements.txt
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Main server (persona routes + core API)
+python main.py       # http://localhost:8000
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Secondary server (gap analysis + verification pipeline)
+uvicorn api:app --reload --port 8001
 ```
+
+The frontend calls both servers. If backends are unavailable, it falls back to static JSON data — all views still render.
+
+## Project Structure
+
+```
+src/
+  pages/
+    Home.tsx                 Persona-driven landing page
+    NavigateDashboard.tsx    Main GPS navigation dashboard (3-column layout)
+    Dashboard.tsx            Individual candidate skill graph
+    OrgDashboard.tsx         Recruiter / organization view
+    CollegeDashboard.tsx     Institutional / dean view
+    ProfileBuilder.tsx       Manual profile creation
+    Upload.tsx               Redirect to profile builder
+  components/
+    TranscriptExplosion.tsx  Transcript → skill node explosion animation
+    SourceScanAnimation.tsx  GitHub/HackerRank scan animation
+    ProximityMap.tsx         Dual-cluster force-directed skill graph
+    RouteFilterPanel.tsx     Route tab selector (Fastest, Low Debt, etc.)
+    RouteTimeline.tsx        Vertical step-by-step path timeline
+    AlternativeDestinations.tsx  Lateral career match cards
+    SkillGraphVisualizer.tsx Force graph for individual profiles
+    SkillRadarChart.tsx      Radar chart overlay
+    GapAnalysisPanel.tsx     Skill gap breakdown
+    CandidateModal.tsx       Candidate detail modal
+    MissionControlTerminal.tsx  GPS engine log terminal
+    GlobalSearchModal.tsx    Cmd+K search palette
+  services/
+    api.ts                   Backend client with fallback to static JSON
+  data/
+    sophia_routes.json       Sophia fallback data
+    alex_routes.json         Alex fallback data
+    agentic_traces.log       Terminal log content
+
+backend/
+  main.py                    FastAPI server (port 8000) — persona + core endpoints
+  api.py                     FastAPI server (port 8001) — gap analysis + verification
+  pathing_engine.py          Career GPS routing engine
+  schemas.py                 Pydantic models (RouteStep, CareerRoute, etc.)
+  personas/
+    sophia.json              Sophia Martinez full persona + route data
+    alex.json                Alex Torres full persona + route data
+  gap_engine.py              Delta calculation
+  github_oracle.py           Mock GitHub verification
+  seed_data.py               Demo seed data generator
+  mock_data/                 Generated candidate/company/college JSON
+```
+
+## Tech Stack
+
+- **Frontend**: React 19, TypeScript, Tailwind CSS 4, Vite 7, Framer Motion, react-force-graph-2d, Recharts, Lucide
+- **Backend**: Python 3.10+, FastAPI, Pydantic, Uvicorn
+- **Deployment**: Cloudflare Tunnel
+
+## Key Routes
+
+| Path | Page |
+|------|------|
+| `/` | Home — persona cards + demo launcher |
+| `/navigate/:persona_id` | GPS Navigation Dashboard |
+| `/dashboard` | Individual candidate skill graph |
+| `/org` | Organization / recruiter view |
+| `/college` | College / institutional view |
+| `/build` | Profile builder |
+
+## API Endpoints
+
+### Main Server (port 8000)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/` | Health check |
+| GET | `/api/persona/{id}` | Full persona profile |
+| GET | `/api/persona/{id}/routes` | Routes, alternatives, skill vectors |
+| GET | `/api/persona/{id}/graph` | Force-graph nodes/links for proximity map |
+| GET | `/api/profile/{id}` | Legacy skill graph data |
+| POST | `/api/profile` | Create new profile |
+| GET | `/api/candidates` | List all candidates |
+| GET | `/api/companies` | List all companies |
+| GET | `/api/colleges` | List all colleges |
+
+### Secondary Server (port 8001)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/health` | Health check |
+| POST | `/api/verify` | Verify GitHub profile → skill vector |
+| POST | `/api/gap-analysis` | Compute skill gaps |
+| POST | `/api/ingest-jd` | Parse job description → skill vector |

@@ -1,0 +1,204 @@
+{
+  "persona_id": "sophia",
+  "name": "Sophia Martinez",
+  "target_role": "CVS Pharmacist",
+  "target_company": "CVS Health",
+  "current_skills": {
+    "Molecular Biology": 0.85,
+    "Organic Chemistry": 0.78,
+    "Biostatistics": 0.68,
+    "Lab Techniques": 0.82,
+    "Data Reporting": 0.72,
+    "Regulatory Basics": 0.45,
+    "Quality Assurance": 0.6,
+    "Documentation & Compliance": 0.55,
+    "Pharmacology": 0.25,
+    "Patient Interaction": 0.3,
+    "Clinical Rotation Hours": 0.0,
+    "PharmD Credential": 0.0
+  },
+  "target_skills": {
+    "Pharmacology": 0.95,
+    "Patient Interaction": 0.9,
+    "Regulatory Compliance": 0.85,
+    "Clinical Rotation Hours": 1.0,
+    "PharmD Credential": 1.0,
+    "Molecular Biology": 0.6,
+    "Data Reporting": 0.5,
+    "Lab Techniques": 0.4
+  },
+  "routes": [
+    {
+      "id": "fastest",
+      "label": "Fastest Route",
+      "subtitle": "Direct Clinical Path",
+      "icon": "clock",
+      "steps": [
+        {
+          "type": "course",
+          "title": "Organic Chemistry II (CHE 118B)",
+          "duration": "1 semester",
+          "skills_gained": {
+            "Organic Chemistry": 0.15
+          }
+        },
+        {
+          "type": "degree",
+          "title": "Complete BS Biotechnology \u2014 UC Davis",
+          "duration": "2 years",
+          "cost": "$32,000",
+          "skills_gained": {
+            "Molecular Biology": 0.1,
+            "Biostatistics": 0.1
+          }
+        },
+        {
+          "type": "degree",
+          "title": "Doctor of Pharmacy (PharmD) \u2014 UCSF or USC",
+          "duration": "4 years",
+          "cost": "$180,000",
+          "skills_gained": {
+            "Pharmacology": 0.7,
+            "Patient Interaction": 0.6,
+            "Clinical Rotation Hours": 1.0,
+            "Regulatory Compliance": 0.4
+          }
+        },
+        {
+          "type": "credential",
+          "title": "NAPLEX Licensure Exam",
+          "duration": "3 months",
+          "cost": "$1,200",
+          "skills_gained": {
+            "PharmD Credential": 1.0
+          }
+        },
+        {
+          "type": "role",
+          "title": "CVS Staff Pharmacist",
+          "salary": "$128,000/yr",
+          "skills_gained": {}
+        }
+      ],
+      "total_time": "6.5 years",
+      "total_cost": "$213,200",
+      "arrival_probability": 95
+    },
+    {
+      "id": "low_debt",
+      "label": "Avoid High Debt",
+      "subtitle": "Industry Stepping Stone",
+      "icon": "shield-dollar",
+      "steps": [
+        {
+          "type": "degree",
+          "title": "Complete BS Biotechnology \u2014 UC Davis",
+          "duration": "2 years",
+          "cost": "$32,000",
+          "skills_gained": {
+            "Molecular Biology": 0.1,
+            "Lab Techniques": 0.1
+          }
+        },
+        {
+          "type": "role",
+          "title": "CVS Pharmacy Technician",
+          "duration": "2 years",
+          "salary": "$38,000/yr",
+          "skills_gained": {
+            "Patient Interaction": 0.45,
+            "Regulatory Basics": 0.3,
+            "Pharmacology": 0.25
+          }
+        },
+        {
+          "type": "degree",
+          "title": "PharmD (Employer-Sponsored via CVS Tuition Program)",
+          "duration": "3 years",
+          "cost": "$90,000",
+          "skills_gained": {
+            "Pharmacology": 0.7,
+            "Clinical Rotation Hours": 1.0,
+            "Regulatory Compliance": 0.4
+          }
+        },
+        {
+          "type": "credential",
+          "title": "NAPLEX Licensure Exam",
+          "duration": "3 months",
+          "cost": "$1,200",
+          "skills_gained": {
+            "PharmD Credential": 1.0
+          }
+        },
+        {
+          "type": "role",
+          "title": "CVS Staff Pharmacist",
+          "salary": "$128,000/yr",
+          "skills_gained": {}
+        }
+      ],
+      "total_time": "7.5 years",
+      "total_cost": "$123,200",
+      "arrival_probability": 92
+    },
+    {
+      "id": "maximize_degree",
+      "label": "Maximize Current Degree",
+      "subtitle": "Lateral Pivot",
+      "icon": "graduation-cap",
+      "steps": [
+        {
+          "type": "degree",
+          "title": "Complete BS Biotechnology \u2014 UC Davis",
+          "duration": "2 years",
+          "cost": "$32,000",
+          "skills_gained": {
+            "Molecular Biology": 0.1,
+            "Quality Assurance": 0.15
+          }
+        },
+        {
+          "type": "credential",
+          "title": "Clinical Research Coordinator (CRC) Certification",
+          "duration": "6 months",
+          "cost": "$2,000",
+          "skills_gained": {
+            "Regulatory Compliance": 0.35,
+            "Documentation & Compliance": 0.3,
+            "Patient Interaction": 0.2
+          }
+        },
+        {
+          "type": "role",
+          "title": "Clinical Research Coordinator \u2014 UC Davis Medical Center",
+          "salary": "$58,000/yr",
+          "skills_gained": {}
+        }
+      ],
+      "total_time": "2.5 years",
+      "total_cost": "$34,000",
+      "arrival_probability": 88
+    }
+  ],
+  "alternatives": [
+    {
+      "title": "Biotech QA Analyst",
+      "company": "Genentech",
+      "match": 95,
+      "gap_summary": "Minimal \u2014 add SOP/GMP certification (2 weeks)"
+    },
+    {
+      "title": "Clinical Research Coordinator",
+      "company": "UC Davis Medical Center",
+      "match": 88,
+      "gap_summary": "CRC certification + 100 patient contact hours"
+    },
+    {
+      "title": "Pharmaceutical Sales Representative",
+      "company": "Pfizer",
+      "match": 72,
+      "gap_summary": "Sales training + product knowledge certification"
+    }
+  ]
+}

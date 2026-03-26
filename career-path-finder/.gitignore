@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+__pycache__
+.claude
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +24,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+backend/data/jobhop_transition_graph.csv
+backend/data/esco_raw/
+backend/data/esco_match_report.json
+.vercel
+.env*.local

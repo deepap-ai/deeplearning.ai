@@ -1,28 +1,58 @@
-import React, { useState } from 'react';
-import SkillGraphVisualizer from '../components/SkillGraphVisualizer';
-import MissionControlTerminal from '../components/MissionControlTerminal';
-import { GraduationCap, Activity, FileText, UploadCloud, Link, BookOpen, Compass, Trophy, Users, DollarSign, Building2, MousePointerClick } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import DegreeSkillDAG from '../components/DegreeSkillDAG';
+import { GraduationCap, Activity, FileText, Link, BookOpen, Compass, Trophy, Users, DollarSign, Building2 } from 'lucide-react';
 
 export default function CollegeDashboard() {
-    const [parsing, setParsing] = useState(false);
+    const { col_id } = useParams();
+
+    // Dynamic State
+    const [collegeInfo, setCollegeInfo] = useState({
+        name: "MIT",
+        domain: "mit.edu",
+        rank: 1,
+        studentCount: 11934,
+        acceptanceRate: 0.04,
+        coursesCount: 142
+    });
+
+    useEffect(() => {
+        // Fetch all colleges to find the requested one
+        fetch('https://career-path-finder-ylyc.onrender.com/api/colleges')
+            .then(res => res.json())
+            .then(data => {
+                const targetCol = data.find((c: any) => c.institution_id === col_id);
+                if (targetCol) {
+                    setCollegeInfo({
+                        name: targetCol.name,
+                        domain: targetCol.website || "mit.edu", // fallback
+                        rank: targetCol.national_rank || 1,
+                        studentCount: targetCol.student_count || 10000,
+                        acceptanceRate: targetCol.acceptance_rate || 0.05,
+                        coursesCount: targetCol.curriculum?.length || 0
+                    });
+                }
+            })
+            .catch(err => console.error("Failed to fetch colleges:", err));
+    }, [col_id]);
 
     return (
-        <div className="flex flex-col gap-6 animate-in fade-in duration-700 h-full max-w-[1600px] mx-auto">
+        <div className="flex flex-col gap-6 h-full max-w-[1600px] mx-auto">
 
             {/* Top Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 shrink-0">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-1 flex items-center gap-3">
-                        MIT <span className="text-accent-red">Curriculum Vector</span>
+                        {collegeInfo.name} <span className="text-accent-red">spArc Profile</span>
                     </h1>
                     <p className="text-slate-500 font-mono text-xs tracking-wide font-medium">
-                        Massachusetts Institute of Technology • Cambridge, MA • Private University
+                        Institution Graph Mapping • Academic Capability to Market Frontier
                     </p>
                 </div>
 
                 <div className="flex gap-3">
                     <div className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 font-bold text-sm flex items-center gap-2 shadow-sm">
-                        <Trophy className="w-4 h-4 text-accent-red" /> Rank: #1
+                        <Trophy className="w-4 h-4 text-accent-red" /> Rank: #{collegeInfo.rank}
                     </div>
                 </div>
             </div>
@@ -45,42 +75,37 @@ export default function CollegeDashboard() {
                                 <div className="bg-slate-50 border border-r-0 border-slate-200 group-focus-within:border-accent-red rounded-l-lg px-3 py-2 flex items-center justify-center transition-colors">
                                     <Link className="w-4 h-4 text-slate-400 group-focus-within:text-accent-red" />
                                 </div>
-                                <input type="text" placeholder="http://catalog.mit.edu/..." className="bg-white border border-slate-200 group-focus-within:border-accent-red rounded-r-lg px-3 py-2 text-xs text-slate-900 w-full outline-none transition-colors" />
+                                <input type="text" readOnly value={`https://catalog.${collegeInfo.domain}/subjects/`} className="bg-white border border-slate-200 group-focus-within:border-accent-red rounded-r-lg px-3 py-2 text-xs text-slate-900 w-full outline-none transition-colors" />
                             </div>
                         </div>
-
-                        <div className="flex items-center gap-4 py-2">
-                            <div className="flex-1 h-px bg-slate-200"></div>
-                            <span className="text-[10px] font-mono text-slate-400 font-bold">OR</span>
-                            <div className="flex-1 h-px bg-slate-200"></div>
-                        </div>
-
-                        <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center gap-3 hover-red-outline hover:bg-red-50 transition-all cursor-pointer group bg-slate-50 relative overflow-hidden">
-                            <div className="p-3 bg-white rounded-full text-slate-400 border border-slate-200 group-hover:text-accent-red group-hover:border-accent-red group-hover:scale-110 transition-all shadow-sm relative z-10">
-                                <UploadCloud className="w-6 h-6" />
-                            </div>
-                            <div className="text-center relative z-10">
-                                <p className="text-sm font-bold text-slate-700 group-hover:text-accent-red mb-1 transition-colors">Upload Syllabi PDF</p>
-                                <p className="text-[10px] text-slate-500 font-mono">Course 6 (EECS) 2024-2025</p>
-                            </div>
-                        </div>
-
-                        <button
-                            onClick={() => setParsing(true)}
-                            className="w-full mt-2 py-2 rounded-lg bg-white border-red-outline text-accent-red hover:bg-red-50 hover:text-red-700 text-xs font-bold uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2"
-                        >
-                            {parsing ? <><span className="w-2 h-2 rounded-full bg-accent-red animate-ping"></span> Parsing Catalog...</> : <><MousePointerClick className="w-4 h-4" /> Run Agentic Planner</>}
-                        </button>
                     </div>
 
-                    {/* Mission Control integrated for parsing view */}
-                    <div className="flex-1 min-h-[250px] bg-slate-900 shadow-sm rounded-xl border border-slate-800 overflow-hidden relative flex flex-col group">
-                        <div className="bg-slate-950 px-3 py-2 border-b border-slate-800 text-[10px] font-mono text-slate-400 tracking-widest uppercase font-bold flex justify-between items-center z-10">
-                            <span>Agentic Planner Log</span>
-                            <span className={`w-1.5 h-1.5 rounded-full bg-accent-red shadow-[0_0_5px_var(--color-accent-red)] ${parsing ? 'animate-pulse' : ''}`}></span>
-                        </div>
-                        <div className="flex-1 relative">
-                            <MissionControlTerminal />
+                    {/* Department Course Counts (Mocked Data) */}
+                    <div className="bg-white shadow-sm p-4 rounded-xl border border-slate-200 mt-2 flex flex-col gap-3">
+                        <h2 className="text-[10px] font-mono font-bold text-slate-500 tracking-widest uppercase border-b border-slate-100 pb-2">
+                            Department Offerings
+                        </h2>
+
+                        <div className="flex flex-col gap-2.5">
+                            <div className="flex justify-between items-center group cursor-pointer">
+                                <span className="text-xs text-slate-700 font-medium group-hover:text-accent-red transition-colors">BS, EECS</span>
+                                <span className="bg-slate-100 text-slate-600 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold group-hover:bg-red-50 group-hover:text-accent-red transition-colors">48 courses</span>
+                            </div>
+
+                            <div className="flex justify-between items-center group cursor-pointer">
+                                <span className="text-xs text-slate-700 font-medium group-hover:text-accent-red transition-colors">BS, Economics</span>
+                                <span className="bg-slate-100 text-slate-600 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold group-hover:bg-red-50 group-hover:text-accent-red transition-colors">26 courses</span>
+                            </div>
+
+                            <div className="flex justify-between items-center group cursor-pointer">
+                                <span className="text-xs text-slate-700 font-medium group-hover:text-accent-red transition-colors">BS, Mathematics</span>
+                                <span className="bg-slate-100 text-slate-600 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold group-hover:bg-red-50 group-hover:text-accent-red transition-colors">35 courses</span>
+                            </div>
+
+                            <div className="flex justify-between items-center group cursor-pointer">
+                                <span className="text-xs text-slate-700 font-medium group-hover:text-accent-red transition-colors">BS, Mechanical Engineering</span>
+                                <span className="bg-slate-100 text-slate-600 text-[10px] font-mono px-2 py-0.5 rounded-full font-bold group-hover:bg-red-50 group-hover:text-accent-red transition-colors">33 courses</span>
+                            </div>
                         </div>
                     </div>
 
@@ -94,15 +119,15 @@ export default function CollegeDashboard() {
                     <div className="flex-1 bg-white shadow-sm rounded-xl border border-slate-200 hover-red-outline relative overflow-hidden flex flex-col group transition-colors">
                         <div className="absolute top-4 left-4 z-10 opacity-70 group-hover:opacity-100 transition-opacity">
                             <div className="flex flex-col gap-1.5 bg-white/90 backdrop-blur-md p-3 rounded-lg border border-slate-200 text-[10px] font-mono font-bold text-slate-700 shadow-sm">
-                                <div className="text-xs text-slate-900 mb-1">Parsed Courses: <span className="text-accent-red">142</span></div>
+                                <div className="text-xs text-slate-900 mb-1">Parsed Courses: <span className="text-accent-red">{collegeInfo.coursesCount}</span></div>
                                 <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-accent-blue"></span> EECS Base</div>
                                 <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-accent-green"></span> AI / Decision Making</div>
                                 <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-accent-purple"></span> Physics / Math</div>
                             </div>
                         </div>
                         {/* The light-mode Visualizer mapping curriculum */}
-                        <div className="absolute inset-0 saturate-150">
-                            <SkillGraphVisualizer rootNodeId="MIT" />
+                        <div className="absolute inset-0">
+                            <DegreeSkillDAG />
                         </div>
                     </div>
                 </div>
@@ -121,7 +146,7 @@ export default function CollegeDashboard() {
 
                             <div className="flex justify-between items-center">
                                 <span className="text-xs text-slate-600 font-medium flex items-center gap-2"><Users className="w-3.5 h-3.5 text-slate-400" /> Acceptance Rate</span>
-                                <span className="text-sm font-bold text-slate-900">4.5%</span>
+                                <span className="text-sm font-bold text-slate-900">{(collegeInfo.acceptanceRate * 100).toFixed(1)}%</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="text-xs text-slate-600 font-medium flex items-center gap-2"><FileText className="w-3.5 h-3.5 text-slate-400" /> Median SAT</span>
@@ -139,7 +164,7 @@ export default function CollegeDashboard() {
 
                             <div className="flex justify-between items-center">
                                 <span className="text-xs text-slate-600 font-medium">Total Students</span>
-                                <span className="text-sm font-bold text-slate-900">11,706</span>
+                                <span className="text-sm font-bold text-slate-900">{collegeInfo.studentCount.toLocaleString()}</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="text-xs text-slate-600 font-medium">Undergraduates</span>

@@ -8,5 +8,8 @@ export default defineConfig({
   plugins: [tailwindcss(), react()],
   server: {
     allowedHosts: true,
+    watch: {
+      ignored: ['**/backend/**']
+    }
   }
 })

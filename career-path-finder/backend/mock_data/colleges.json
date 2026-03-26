@@ -1,0 +1,157 @@
+[
+  {
+    "institution_id": "col_01",
+    "name": "MIT",
+    "national_rank": 1,
+    "student_count": 11934,
+    "acceptance_rate": 0.04,
+    "curriculum": [
+      {
+        "course_id": "c_01",
+        "title": "Intro to CS",
+        "imparted_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.4,
+            "provenance": "MIT 6.0001"
+          }
+        }
+      },
+      {
+        "course_id": "c_02",
+        "title": "Machine Learning",
+        "imparted_skill_vector": {
+          "Machine Learning": {
+            "name": "Machine Learning",
+            "intensity": 0.7,
+            "provenance": "MIT 6.3900"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "institution_id": "col_02",
+    "name": "Stanford University",
+    "national_rank": 2,
+    "student_count": 17326,
+    "acceptance_rate": 0.04,
+    "curriculum": [
+      {
+        "course_id": "c_03",
+        "title": "Design and Analysis of Algorithms",
+        "imparted_skill_vector": {
+          "Algorithms": {
+            "name": "Algorithms",
+            "intensity": 0.8,
+            "provenance": "Stanford CS161"
+          }
+        }
+      },
+      {
+        "course_id": "c_04",
+        "title": "Computer Systems",
+        "imparted_skill_vector": {
+          "System Design": {
+            "name": "System Design",
+            "intensity": 0.7,
+            "provenance": "Stanford CS110"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "institution_id": "col_03",
+    "name": "UC Berkeley",
+    "national_rank": 4,
+    "student_count": 45307,
+    "acceptance_rate": 0.11,
+    "curriculum": [
+      {
+        "course_id": "c_05",
+        "title": "Structure and Interpretation of Computer Programs",
+        "imparted_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.6,
+            "provenance": "UCB CS61A"
+          }
+        }
+      },
+      {
+        "course_id": "c_06",
+        "title": "Data Structures",
+        "imparted_skill_vector": {
+          "Data Structures": {
+            "name": "Data Structures",
+            "intensity": 0.7,
+            "provenance": "UCB CS61B"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "institution_id": "col_04",
+    "name": "Carnegie Mellon University",
+    "national_rank": 3,
+    "student_count": 14586,
+    "acceptance_rate": 0.11,
+    "curriculum": [
+      {
+        "course_id": "c_07",
+        "title": "Parallel Computer Architecture and Programming",
+        "imparted_skill_vector": {
+          "C++": {
+            "name": "C++",
+            "intensity": 0.8,
+            "provenance": "CMU 15-418"
+          }
+        }
+      },
+      {
+        "course_id": "c_08",
+        "title": "Distributed Systems",
+        "imparted_skill_vector": {
+          "Distributed Systems": {
+            "name": "Distributed Systems",
+            "intensity": 0.8,
+            "provenance": "CMU 15-440"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "institution_id": "col_05",
+    "name": "University of Washington",
+    "national_rank": 10,
+    "student_count": 49165,
+    "acceptance_rate": 0.53,
+    "curriculum": [
+      {
+        "course_id": "c_09",
+        "title": "Software Engineering",
+        "imparted_skill_vector": {
+          "Agile": {
+            "name": "Agile",
+            "intensity": 0.6,
+            "provenance": "UW CSE403"
+          }
+        }
+      },
+      {
+        "course_id": "c_10",
+        "title": "Database Systems",
+        "imparted_skill_vector": {
+          "SQL": {
+            "name": "SQL",
+            "intensity": 0.7,
+            "provenance": "UW CSE414"
+          }
+        }
+      }
+    ]
+  }
+]

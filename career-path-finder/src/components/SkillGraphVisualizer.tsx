@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 
 // We'll define a quick helper to generate data based on the root node
@@ -50,13 +50,20 @@ const generateGraphData = (rootNodeId: string) => {
     };
 };
 
-export default function SkillGraphVisualizer({ rootNodeId = 'Alex Chen' }: { rootNodeId?: string }) {
-    const fgRef = useRef<any>();
+export default function SkillGraphVisualizer({ rootNodeId = 'Alex Chen', externalData = null }: { rootNodeId?: string, externalData?: any }) {
+    const fgRef = useRef<any>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
 
-    // Generate data once based on the prop
-    const [graphData] = useState(() => generateGraphData(rootNodeId));
+    // Generate static data once based on the prop, unless dynamic external data is provided
+    const [graphData, setGraphData] = useState(() => externalData || generateGraphData(rootNodeId));
+
+    // Update graph if external dynamic data comes in after mount
+    useEffect(() => {
+        if (externalData) {
+            setGraphData(externalData);
+        }
+    }, [externalData]);
 
     useEffect(() => {
         const observer = new ResizeObserver(entries => {
@@ -147,7 +154,7 @@ export default function SkillGraphVisualizer({ rootNodeId = 'Alex Chen' }: { roo
                 linkColor={() => '#cbd5e1'} // Light gray links
                 linkWidth={1.5}
                 linkDirectionalParticles={3}
-                linkDirectionalParticleColor={(link: any) => '#ef4444'} // Red particles!
+                linkDirectionalParticleColor={() => '#ef4444'} // Red particles!
                 linkDirectionalParticleSpeed={0.005}
                 backgroundColor="#ffffff"
             />
