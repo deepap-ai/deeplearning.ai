@@ -1,0 +1,182 @@
+{
+  "persona_id": "alex",
+  "name": "Alex Torres",
+  "target_role": "AI-Native Founder (Deep Tech)",
+  "target_company": "Own Venture",
+  "current_skills": {
+    "Non-Deterministic Logic": 0.75,
+    "Python": 0.8,
+    "ML Fundamentals": 0.65,
+    "Web Development": 0.6,
+    "Systems Design": 0.25,
+    "Leadership": 0.2,
+    "Business Acumen": 0.15,
+    "Ethics & Policy": 0.1,
+    "Agentic Architecture": 0.3,
+    "Fundraising": 0.0
+  },
+  "target_skills": {
+    "Systems Thinking": 0.95,
+    "Agentic Architecture": 0.9,
+    "Business Acumen": 0.85,
+    "Leadership": 0.9,
+    "ML Fundamentals": 0.85,
+    "Ethics & Policy": 0.7,
+    "Fundraising": 0.75,
+    "Non-Deterministic Logic": 0.8,
+    "Python": 0.7,
+    "Systems Design": 0.85
+  },
+  "routes": [
+    {
+      "id": "solo_founder",
+      "label": "The Solo Founder",
+      "subtitle": "High Risk, High Reward",
+      "icon": "rocket",
+      "steps": [
+        {
+          "type": "experience",
+          "title": "UC Merced COSMOS Cluster \u2014 \"AI at Scale\"",
+          "duration": "Summer 2025",
+          "skills_gained": {
+            "ML Fundamentals": 0.15,
+            "Non-Deterministic Logic": 0.1
+          },
+          "year": "2025"
+        },
+        {
+          "type": "course",
+          "title": "Dual-Enrollment: Agentic Architecture (Community College)",
+          "duration": "Fall 2025",
+          "skills_gained": {
+            "Agentic Architecture": 0.25,
+            "Systems Design": 0.2
+          },
+          "year": "2025"
+        },
+        {
+          "type": "degree",
+          "title": "UC Campus \u2014 Mechanical Engineering + Ethics & Policy (Dual Major)",
+          "duration": "4 years",
+          "cost": "$56,000",
+          "skills_gained": {
+            "Systems Thinking": 0.4,
+            "Ethics & Policy": 0.5,
+            "Leadership": 0.3,
+            "Systems Design": 0.35
+          },
+          "year": "2027\u20132031"
+        },
+        {
+          "type": "experience",
+          "title": "Build Interdisciplinary AI + MechE Projects (Verified Artifacts)",
+          "duration": "During college",
+          "skills_gained": {
+            "Agentic Architecture": 0.3,
+            "Systems Thinking": 0.25
+          },
+          "year": "2028\u20132031"
+        },
+        {
+          "type": "experience",
+          "title": "YC or Buildspace Incubator Application",
+          "duration": "6 months",
+          "skills_gained": {
+            "Fundraising": 0.5,
+            "Business Acumen": 0.4,
+            "Leadership": 0.3
+          },
+          "year": "2032"
+        },
+        {
+          "type": "role",
+          "title": "Launch Deep Tech AI Startup",
+          "salary": "Equity-based",
+          "skills_gained": {},
+          "year": "2033\u20132034"
+        }
+      ],
+      "total_time": "~10 years",
+      "total_cost": "$56,000",
+      "arrival_probability": 65
+    },
+    {
+      "id": "enterprise_architect",
+      "label": "Enterprise Agent Architect",
+      "subtitle": "High Salary, Lower Risk",
+      "icon": "building",
+      "steps": [
+        {
+          "type": "experience",
+          "title": "UC Merced COSMOS Cluster \u2014 \"AI at Scale\"",
+          "duration": "Summer 2025",
+          "skills_gained": {
+            "ML Fundamentals": 0.15,
+            "Non-Deterministic Logic": 0.1
+          },
+          "year": "2025"
+        },
+        {
+          "type": "course",
+          "title": "Dual-Enrollment: Systems Architecture (Community College)",
+          "duration": "Fall 2025 \u2013 Spring 2026",
+          "skills_gained": {
+            "Systems Design": 0.25,
+            "Agentic Architecture": 0.15
+          },
+          "year": "2026"
+        },
+        {
+          "type": "degree",
+          "title": "UC Campus \u2014 Computer Science (Focus: Distributed Systems)",
+          "duration": "4 years",
+          "cost": "$52,000",
+          "skills_gained": {
+            "Systems Thinking": 0.45,
+            "Systems Design": 0.3,
+            "Agentic Architecture": 0.25,
+            "Leadership": 0.15
+          },
+          "year": "2027\u20132031"
+        },
+        {
+          "type": "experience",
+          "title": "Build Autonomous Scheduler (OS Class Project \u2192 Verified Artifact)",
+          "duration": "1 semester",
+          "skills_gained": {
+            "Agentic Architecture": 0.2,
+            "Systems Thinking": 0.15
+          },
+          "year": "2029"
+        },
+        {
+          "type": "role",
+          "title": "Applied AI Research Lab \u2014 Tier-1 Tech Firm",
+          "salary": "$185,000/yr",
+          "skills_gained": {
+            "Leadership": 0.2,
+            "Business Acumen": 0.25
+          },
+          "year": "2031"
+        }
+      ],
+      "total_time": "~7 years",
+      "total_cost": "$52,000",
+      "arrival_probability": 85
+    }
+  ],
+  "alternatives": [
+    {
+      "title": "ML Engineer",
+      "company": "Google DeepMind",
+      "match": 82,
+      "gap_summary": "Strengthen Systems Design + formal ML degree"
+    },
+    {
+      "title": "Applied AI Researcher",
+      "company": "Anthropic",
+      "match": 78,
+      "gap_summary": "Graduate-level ML coursework + research publications"
+    }
+  ]
+}

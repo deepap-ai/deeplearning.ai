@@ -1,0 +1,552 @@
+[
+  {
+    "user_id": "alex",
+    "name": "Alex Chen",
+    "headline": "8th Grade Prodigy",
+    "verified_skill_vector": {
+      "Non-Deterministic Logic": {
+        "name": "Non-Deterministic Logic",
+        "intensity": 0.75,
+        "provenance": "COSMOS Cluster"
+      },
+      "Python": {
+        "name": "Python",
+        "intensity": 0.80,
+        "provenance": "GitHub Oracle"
+      },
+      "ML Fundamentals": {
+        "name": "ML Fundamentals",
+        "intensity": 0.65,
+        "provenance": "GitHub Oracle"
+      },
+      "Web Development": {
+        "name": "Web Development",
+        "intensity": 0.60,
+        "provenance": "GitHub Oracle"
+      },
+      "Systems Design": {
+        "name": "Systems Design",
+        "intensity": 0.25,
+        "provenance": "HackerRank Oracle"
+      },
+      "Agentic Architecture": {
+        "name": "Agentic Architecture",
+        "intensity": 0.30,
+        "provenance": "GitHub Oracle"
+      }
+    },
+    "normalized_scores": {
+      "Non-Deterministic Logic": 0.75,
+      "Python": 0.80,
+      "ML Fundamentals": 0.65,
+      "Web Development": 0.60,
+      "Systems Design": 0.25,
+      "Agentic Architecture": 0.30
+    },
+    "graph_intersections": {
+      "Non-Deterministic Logic": ["COSMOS Cluster"],
+      "Python": ["GitHub"],
+      "ML Fundamentals": ["GitHub"],
+      "Web Development": ["GitHub"],
+      "Systems Design": ["HackerRank"],
+      "Agentic Architecture": ["GitHub"]
+    },
+    "last_synced": "2026-03-25 18:00:00"
+  },
+  {
+    "user_id": "alexkim",
+    "name": "Alex Kim",
+    "headline": "AI Systems \u00b7 UC Berkeley '26",
+    "verified_skill_vector": {
+      "Agentic Architecture": {
+        "name": "Agentic Architecture",
+        "intensity": 0.97,
+        "provenance": "Verified"
+      },
+      "Non-deterministic Logic": {
+        "name": "Non-deterministic Logic",
+        "intensity": 0.91,
+        "provenance": "Verified"
+      },
+      "Systems Design": {
+        "name": "Systems Design",
+        "intensity": 0.88,
+        "provenance": "Verified"
+      }
+    },
+    "last_synced": "2026-03-17 12:00:00"
+  },
+  {
+    "user_id": "sophia",
+    "name": "Sophia Martinez",
+    "headline": "2nd-Year Biotech, UC Davis",
+    "verified_skill_vector": {
+      "Molecular Biology": {
+        "name": "Molecular Biology",
+        "intensity": 0.8,
+        "provenance": "Transcript"
+      },
+      "Data Reporting": {
+        "name": "Data Reporting",
+        "intensity": 0.75,
+        "provenance": "Transcript, Resume"
+      },
+      "Regulatory Compliance": {
+        "name": "Regulatory Compliance",
+        "intensity": 0.65,
+        "provenance": "Resume, LinkedIn"
+      },
+      "Lab Techniques": {
+        "name": "Lab Techniques",
+        "intensity": 0.82,
+        "provenance": "Transcript, Resume"
+      },
+      "Organic Chemistry": {
+        "name": "Organic Chemistry",
+        "intensity": 0.78,
+        "provenance": "Transcript"
+      },
+      "Biostatistics": {
+        "name": "Biostatistics",
+        "intensity": 0.68,
+        "provenance": "Transcript"
+      },
+      "Quality Assurance": {
+        "name": "Quality Assurance",
+        "intensity": 0.60,
+        "provenance": "Resume"
+      },
+      "Documentation & Compliance": {
+        "name": "Documentation & Compliance",
+        "intensity": 0.55,
+        "provenance": "Resume, LinkedIn"
+      },
+      "Pharmacology": {
+        "name": "Pharmacology",
+        "intensity": 0.25,
+        "provenance": "Transcript"
+      },
+      "Patient Interaction": {
+        "name": "Patient Interaction",
+        "intensity": 0.30,
+        "provenance": "Resume"
+      },
+      "Bioinformatics": {
+        "name": "Bioinformatics",
+        "intensity": 0.7,
+        "provenance": "GitHub, Transcript"
+      },
+      "Python": {
+        "name": "Python",
+        "intensity": 0.5,
+        "provenance": "GitHub, Resume"
+      }
+    },
+    "last_synced": "2026-02-26 18:02:52.341538"
+  },
+  {
+    "user_id": "maya",
+    "name": "Maya Patel",
+    "headline": "11th Grader",
+    "verified_skill_vector": {
+      "Python": {
+        "name": "Python",
+        "intensity": 0.8,
+        "provenance": "GitHub Oracle"
+      },
+      "Agent Stewardship": {
+        "name": "Agent Stewardship",
+        "intensity": 0.7,
+        "provenance": "Dual Enrollment CC"
+      }
+    },
+    "last_synced": "2026-02-26 18:02:52.341540"
+  },
+  {
+    "user_id": "user_53a543fc",
+    "name": "Alex Chen ",
+    "headline": "SME",
+    "verified_skill_vector": {
+      "Python": {
+        "name": "Python",
+        "intensity": 0.8,
+        "provenance": "Resume, Transcript"
+      },
+      "React": {
+        "name": "React",
+        "intensity": 0.85,
+        "provenance": "Resume"
+      },
+      "Node.js": {
+        "name": "Node.js",
+        "intensity": 0.75,
+        "provenance": "Resume"
+      },
+      "Agile": {
+        "name": "Agile",
+        "intensity": 0.85,
+        "provenance": "Resume"
+      },
+      "Machine Learning": {
+        "name": "Machine Learning",
+        "intensity": 0.7,
+        "provenance": "Resume, Transcript"
+      },
+      "Algorithms": {
+        "name": "Algorithms",
+        "intensity": 0.85,
+        "provenance": "Transcript"
+      },
+      "Linear Algebra": {
+        "name": "Linear Algebra",
+        "intensity": 0.75,
+        "provenance": "Transcript"
+      },
+      "System Design": {
+        "name": "System Design",
+        "intensity": 0.6,
+        "provenance": "Transcript"
+      }
+    },
+    "normalized_scores": {
+      "Python": 0.8,
+      "React": 0.85,
+      "Node.js": 0.75,
+      "Agile": 0.85,
+      "Machine Learning": 0.7,
+      "Algorithms": 0.85,
+      "Linear Algebra": 0.75,
+      "System Design": 0.6
+    },
+    "graph_intersections": {
+      "Python": [
+        "Resume",
+        "Transcript"
+      ],
+      "React": [
+        "Resume"
+      ],
+      "Node.js": [
+        "Resume"
+      ],
+      "Agile": [
+        "Resume"
+      ],
+      "Machine Learning": [
+        "Resume",
+        "Transcript"
+      ],
+      "Algorithms": [
+        "Transcript"
+      ],
+      "Linear Algebra": [
+        "Transcript"
+      ],
+      "System Design": [
+        "Transcript"
+      ]
+    },
+    "last_synced": "2026-02-28 21:26:29.911682"
+  },
+  {
+    "user_id": "alicesmith",
+    "name": "Alice Smith",
+    "headline": "Dev",
+    "verified_skill_vector": {},
+    "normalized_scores": {},
+    "graph_intersections": {},
+    "last_synced": "2026-02-28 21:37:07.029698"
+  },
+  {
+    "user_id": "benbrant",
+    "name": "Ben Brant",
+    "headline": "Staff Engineer \u00b7 Ex-Nvidia",
+    "verified_skill_vector": {
+      "CUDA / GPU programming": {
+        "name": "CUDA / GPU programming",
+        "intensity": 0.95,
+        "provenance": "GitHub Oracle"
+      },
+      "High Performance Computing": {
+        "name": "High Performance Computing",
+        "intensity": 0.88,
+        "provenance": "Transcript"
+      },
+      "C++": {
+        "name": "C++",
+        "intensity": 0.92,
+        "provenance": "GitHub"
+      },
+      "Deep Learning": {
+        "name": "Deep Learning",
+        "intensity": 0.85,
+        "provenance": "Verified"
+      }
+    },
+    "normalized_scores": {
+      "Python": 0.95,
+      "React": 0.85,
+      "TypeScript": 0.8,
+      "Node.js": 0.75,
+      "System Design": 0.6,
+      "Agile": 0.85,
+      "Machine Learning": 0.7,
+      "Algorithms": 0.85,
+      "Linear Algebra": 0.75
+    },
+    "graph_intersections": {
+      "Python": [
+        "GitHub",
+        "Resume",
+        "Transcript"
+      ],
+      "React": [
+        "GitHub",
+        "Resume"
+      ],
+      "TypeScript": [
+        "GitHub"
+      ],
+      "Node.js": [
+        "GitHub",
+        "Resume"
+      ],
+      "System Design": [
+        "GitHub",
+        "Transcript"
+      ],
+      "Agile": [
+        "Resume"
+      ],
+      "Machine Learning": [
+        "Resume",
+        "Transcript"
+      ],
+      "Algorithms": [
+        "Transcript"
+      ],
+      "Linear Algebra": [
+        "Transcript"
+      ]
+    },
+    "last_synced": "2026-02-28 23:31:10.375465"
+  },
+  {
+    "user_id": "benbrandt",
+    "name": "Ben Brandt",
+    "headline": "Software Engineer",
+    "verified_skill_vector": {
+      "Systems Thinking": {
+        "name": "Systems Thinking",
+        "intensity": 0.6836464308353845,
+        "provenance": "GitHub"
+      },
+      "Backend Architecture": {
+        "name": "Backend Architecture",
+        "intensity": 0.4,
+        "provenance": "GitHub"
+      },
+      "C++": {
+        "name": "C++",
+        "intensity": 0.05018785850123072,
+        "provenance": "GitHub"
+      },
+      "Frontend Development": {
+        "name": "Frontend Development",
+        "intensity": 0.0229484860037153,
+        "provenance": "GitHub"
+      },
+      "System Design": {
+        "name": "System Design",
+        "intensity": 0.005983486080841959,
+        "provenance": "GitHub"
+      }
+    },
+    "normalized_scores": {
+      "Systems Thinking": 0.6836464308353845,
+      "Backend Architecture": 0.4,
+      "C++": 0.05018785850123072,
+      "Frontend Development": 0.0229484860037153,
+      "System Design": 0.005983486080841959
+    },
+    "graph_intersections": {
+      "Systems Thinking": [
+        "GitHub"
+      ],
+      "Backend Architecture": [
+        "GitHub"
+      ],
+      "C++": [
+        "GitHub"
+      ],
+      "Frontend Development": [
+        "GitHub"
+      ],
+      "System Design": [
+        "GitHub"
+      ]
+    },
+    "last_synced": "2026-02-28 23:45:39.762810"
+  },
+  {
+    "user_id": "benbrant",
+    "name": "Ben brant ",
+    "headline": "Staff Engineer \u00b7 Ex-Nvidia",
+    "verified_skill_vector": {
+      "CUDA / GPU programming": {
+        "name": "CUDA / GPU programming",
+        "intensity": 0.95,
+        "provenance": "GitHub Oracle"
+      },
+      "High Performance Computing": {
+        "name": "High Performance Computing",
+        "intensity": 0.88,
+        "provenance": "Transcript"
+      },
+      "C++": {
+        "name": "C++",
+        "intensity": 0.92,
+        "provenance": "GitHub"
+      },
+      "Deep Learning": {
+        "name": "Deep Learning",
+        "intensity": 0.85,
+        "provenance": "Verified"
+      }
+    },
+    "normalized_scores": {},
+    "graph_intersections": {},
+    "last_synced": "2026-02-28 23:54:51.179483"
+  },
+  {
+    "user_id": "meenalpande",
+    "name": "Meenal Pande",
+    "headline": "Backend Lead · UC Berkeley '24",
+    "verified_skill_vector": {
+      "Distributed Systems": {
+        "name": "Distributed Systems",
+        "intensity": 0.96,
+        "provenance": "GitHub, HackerRank"
+      },
+      "Go": {
+        "name": "Go",
+        "intensity": 0.91,
+        "provenance": "Verified"
+      },
+      "Cloud Architecture": {
+        "name": "Cloud Architecture",
+        "intensity": 0.89,
+        "provenance": "LinkedIn"
+      },
+      "Consensus Algorithms": {
+        "name": "Consensus Algorithms",
+        "intensity": 0.84,
+        "provenance": "Transcript"
+      }
+    },
+    "normalized_scores": {
+      "Systems Thinking": 0.7,
+      "Backend Architecture": 0.4,
+      "Frontend Development": 0.25,
+      "Python": 0.9,
+      "Algorithms": 0.9,
+      "Data Structures": 0.88,
+      "System Design": 0.7,
+      "Agile": 0.85,
+      "Team Leadership": 0.75,
+      "React": 0.9,
+      "Product Strategy": 0.65,
+      "Tech Writing": 0.7,
+      "Node.js": 0.75,
+      "TypeScript": 0.8,
+      "JavaScript": 0.8,
+      "AWS": 0.75,
+      "Docker": 0.7,
+      "Kubernetes": 0.7,
+      "SQL": 0.75,
+      "C++": 0.8,
+      "Java": 0.8,
+      "Go": 0.75,
+      "Machine Learning": 0.8
+    },
+    "graph_intersections": {
+      "Systems Thinking": [
+        "GitHub"
+      ],
+      "Backend Architecture": [
+        "GitHub"
+      ],
+      "Frontend Development": [
+        "GitHub"
+      ],
+      "Python": [
+        "GitHub",
+        "HackerRank",
+        "Resume"
+      ],
+      "Algorithms": [
+        "HackerRank",
+        "Transcript"
+      ],
+      "Data Structures": [
+        "HackerRank",
+        "Transcript"
+      ],
+      "System Design": [
+        "HackerRank"
+      ],
+      "Agile": [
+        "LinkedIn",
+        "Resume"
+      ],
+      "Team Leadership": [
+        "LinkedIn"
+      ],
+      "React": [
+        "LinkedIn",
+        "Resume"
+      ],
+      "Product Strategy": [
+        "LinkedIn"
+      ],
+      "Tech Writing": [
+        "LinkedIn"
+      ],
+      "Node.js": [
+        "Resume"
+      ],
+      "TypeScript": [
+        "Resume"
+      ],
+      "JavaScript": [
+        "Resume"
+      ],
+      "AWS": [
+        "Resume"
+      ],
+      "Docker": [
+        "Resume"
+      ],
+      "Kubernetes": [
+        "Resume"
+      ],
+      "SQL": [
+        "Resume"
+      ],
+      "C++": [
+        "Resume"
+      ],
+      "Java": [
+        "Resume"
+      ],
+      "Go": [
+        "Resume",
+        "Transcript"
+      ],
+      "Machine Learning": [
+        "Transcript"
+      ]
+    },
+    "last_synced": "2026-03-01 02:39:29.579635"
+  }
+]

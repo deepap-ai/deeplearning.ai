@@ -35,6 +35,28 @@ def calculate_gap(candidate_vector, jd_vector):
                     "action": "Micro-credential Assignment",
                     "details": "Implement a 2-agent negotiation simulation using AutoGen."
                 }
+            elif skill == "Systems Thinking":
+                recommendations[skill] = {
+                    "action": "Resolve targeted GitHub issue in Apache Kafka",
+                    "repo": "apache/kafka",
+                    "issue": "#14523: Redesign partition rebalancing protocol"
+                }
+            elif skill == "Backend Architecture":
+                recommendations[skill] = {
+                    "action": "Complete Custom Architecture Prompt",
+                    "details": "Design and implement a rate-limiting middleware using the token bucket algorithm with Redis backing store."
+                }
+            elif skill == "Reinforcement Learning":
+                recommendations[skill] = {
+                    "action": "Micro-credential Assignment",
+                    "details": "Complete DeepMind x UCL RL Course — Module 4: Policy Gradient Methods with implementation exercise."
+                }
+            elif skill == "Python":
+                recommendations[skill] = {
+                    "action": "Resolve targeted GitHub issue in CPython",
+                    "repo": "python/cpython",
+                    "issue": "#108345: Optimize asyncio task scheduling for high-concurrency workloads"
+                }
             else:
                 recommendations[skill] = {
                     "action": "Curated Module",

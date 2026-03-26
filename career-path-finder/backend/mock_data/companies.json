@@ -1,0 +1,587 @@
+[
+  {
+    "company_id": "comp_01",
+    "name": "Stripe",
+    "industry": "FinTech",
+    "open_roles": [
+      {
+        "job_id": "job_stripe_0",
+        "title": "Backend Engineer",
+        "department": "Engineering",
+        "required_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "System Design": {
+            "name": "System Design",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          },
+          "API Design": {
+            "name": "API Design",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_stripe_1",
+        "title": "Frontend Developer",
+        "department": "Product",
+        "required_skill_vector": {
+          "React": {
+            "name": "React",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "TypeScript": {
+            "name": "TypeScript",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CSS": {
+            "name": "CSS",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_stripe_2",
+        "title": "Data Scientist",
+        "department": "Data",
+        "required_skill_vector": {
+          "Machine Learning": {
+            "name": "Machine Learning",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Python": {
+            "name": "Python",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "SQL": {
+            "name": "SQL",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_stripe_3",
+        "title": "Product Manager",
+        "department": "Product",
+        "required_skill_vector": {
+          "Agile": {
+            "name": "Agile",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Communication": {
+            "name": "Communication",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "Data Analysis": {
+            "name": "Data Analysis",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_stripe_4",
+        "title": "DevOps Engineer",
+        "department": "Infrastructure",
+        "required_skill_vector": {
+          "AWS": {
+            "name": "AWS",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Docker": {
+            "name": "Docker",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CI/CD": {
+            "name": "CI/CD",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "company_id": "comp_02",
+    "name": "OpenAI",
+    "industry": "Artificial Intelligence",
+    "open_roles": [
+      {
+        "job_id": "job_openai_0",
+        "title": "Backend Engineer",
+        "department": "Engineering",
+        "required_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "System Design": {
+            "name": "System Design",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          },
+          "API Design": {
+            "name": "API Design",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_openai_1",
+        "title": "Frontend Developer",
+        "department": "Product",
+        "required_skill_vector": {
+          "React": {
+            "name": "React",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "TypeScript": {
+            "name": "TypeScript",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CSS": {
+            "name": "CSS",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_openai_2",
+        "title": "Data Scientist",
+        "department": "Data",
+        "required_skill_vector": {
+          "Machine Learning": {
+            "name": "Machine Learning",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Python": {
+            "name": "Python",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "SQL": {
+            "name": "SQL",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_openai_3",
+        "title": "Product Manager",
+        "department": "Product",
+        "required_skill_vector": {
+          "Agile": {
+            "name": "Agile",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Communication": {
+            "name": "Communication",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "Data Analysis": {
+            "name": "Data Analysis",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_openai_4",
+        "title": "DevOps Engineer",
+        "department": "Infrastructure",
+        "required_skill_vector": {
+          "AWS": {
+            "name": "AWS",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Docker": {
+            "name": "Docker",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CI/CD": {
+            "name": "CI/CD",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "company_id": "comp_03",
+    "name": "SpaceX",
+    "industry": "Aerospace",
+    "open_roles": [
+      {
+        "job_id": "job_spacex_0",
+        "title": "Backend Engineer",
+        "department": "Engineering",
+        "required_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "System Design": {
+            "name": "System Design",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          },
+          "API Design": {
+            "name": "API Design",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_spacex_1",
+        "title": "Frontend Developer",
+        "department": "Product",
+        "required_skill_vector": {
+          "React": {
+            "name": "React",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "TypeScript": {
+            "name": "TypeScript",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CSS": {
+            "name": "CSS",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_spacex_2",
+        "title": "Data Scientist",
+        "department": "Data",
+        "required_skill_vector": {
+          "Machine Learning": {
+            "name": "Machine Learning",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Python": {
+            "name": "Python",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "SQL": {
+            "name": "SQL",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_spacex_3",
+        "title": "Product Manager",
+        "department": "Product",
+        "required_skill_vector": {
+          "Agile": {
+            "name": "Agile",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Communication": {
+            "name": "Communication",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "Data Analysis": {
+            "name": "Data Analysis",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_spacex_4",
+        "title": "DevOps Engineer",
+        "department": "Infrastructure",
+        "required_skill_vector": {
+          "AWS": {
+            "name": "AWS",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Docker": {
+            "name": "Docker",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CI/CD": {
+            "name": "CI/CD",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "company_id": "comp_04",
+    "name": "Vercel",
+    "industry": "Developer Tools",
+    "open_roles": [
+      {
+        "job_id": "job_vercel_0",
+        "title": "Backend Engineer",
+        "department": "Engineering",
+        "required_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "System Design": {
+            "name": "System Design",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          },
+          "API Design": {
+            "name": "API Design",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_vercel_1",
+        "title": "Frontend Developer",
+        "department": "Product",
+        "required_skill_vector": {
+          "React": {
+            "name": "React",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "TypeScript": {
+            "name": "TypeScript",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CSS": {
+            "name": "CSS",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_vercel_2",
+        "title": "Data Scientist",
+        "department": "Data",
+        "required_skill_vector": {
+          "Machine Learning": {
+            "name": "Machine Learning",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Python": {
+            "name": "Python",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "SQL": {
+            "name": "SQL",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_vercel_3",
+        "title": "Product Manager",
+        "department": "Product",
+        "required_skill_vector": {
+          "Agile": {
+            "name": "Agile",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Communication": {
+            "name": "Communication",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "Data Analysis": {
+            "name": "Data Analysis",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_vercel_4",
+        "title": "DevOps Engineer",
+        "department": "Infrastructure",
+        "required_skill_vector": {
+          "AWS": {
+            "name": "AWS",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Docker": {
+            "name": "Docker",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CI/CD": {
+            "name": "CI/CD",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "company_id": "comp_05",
+    "name": "Anthropic",
+    "industry": "Artificial Intelligence",
+    "open_roles": [
+      {
+        "job_id": "job_anthropic_0",
+        "title": "Backend Engineer",
+        "department": "Engineering",
+        "required_skill_vector": {
+          "Python": {
+            "name": "Python",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "System Design": {
+            "name": "System Design",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          },
+          "API Design": {
+            "name": "API Design",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_anthropic_1",
+        "title": "Frontend Developer",
+        "department": "Product",
+        "required_skill_vector": {
+          "React": {
+            "name": "React",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "TypeScript": {
+            "name": "TypeScript",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CSS": {
+            "name": "CSS",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_anthropic_2",
+        "title": "Data Scientist",
+        "department": "Data",
+        "required_skill_vector": {
+          "Machine Learning": {
+            "name": "Machine Learning",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Python": {
+            "name": "Python",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "SQL": {
+            "name": "SQL",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_anthropic_3",
+        "title": "Product Manager",
+        "department": "Product",
+        "required_skill_vector": {
+          "Agile": {
+            "name": "Agile",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Communication": {
+            "name": "Communication",
+            "intensity": 0.9,
+            "provenance": "Target JD Vector"
+          },
+          "Data Analysis": {
+            "name": "Data Analysis",
+            "intensity": 0.6,
+            "provenance": "Target JD Vector"
+          }
+        }
+      },
+      {
+        "job_id": "job_anthropic_4",
+        "title": "DevOps Engineer",
+        "department": "Infrastructure",
+        "required_skill_vector": {
+          "AWS": {
+            "name": "AWS",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "Docker": {
+            "name": "Docker",
+            "intensity": 0.8,
+            "provenance": "Target JD Vector"
+          },
+          "CI/CD": {
+            "name": "CI/CD",
+            "intensity": 0.7,
+            "provenance": "Target JD Vector"
+          }
+        }
+      }
+    ]
+  }
+]

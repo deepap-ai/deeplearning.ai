@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import logsRaw from '../data/agentic_traces.log?raw';
 
-export default function MissionControlTerminal() {
+export default function MissionControlTerminal({ profileId = 'alex' }: { profileId?: string }) {
     const [lines, setLines] = useState<string[]>([]);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const safeLogs = typeof logsRaw === 'string' ? logsRaw : '';
+        const safeLogs = typeof logsRaw === 'string' ? logsRaw.replace(/alex_chen_dev/g, `${profileId}_dev`) : '';
         const logArray = safeLogs.trim().split('\n').filter(Boolean);
         let currentLine = 0;
 

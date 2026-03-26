@@ -1,0 +1,81 @@
+[
+  {
+    "user_id": "alex",
+    "name": "Alex Torres",
+    "headline": "8th Grade Prodigy",
+    "verified_skill_vector": {
+      "Python": {
+        "name": "Python",
+        "intensity": 0.9,
+        "provenance": "GitHub Oracle"
+      },
+      "C++": {
+        "name": "C++",
+        "intensity": 0.85,
+        "provenance": "HackerRank Oracle"
+      },
+      "Data Structures": {
+        "name": "Data Structures",
+        "intensity": 0.8,
+        "provenance": "HackerRank Oracle"
+      },
+      "Distributed Systems": {
+        "name": "Distributed Systems",
+        "intensity": 0.7,
+        "provenance": "GitHub Oracle"
+      },
+      "Non-Deterministic Logic": {
+        "name": "Non-Deterministic Logic",
+        "intensity": 0.85,
+        "provenance": "COSMOS Cluster"
+      }
+    },
+    "last_synced": "2026-02-26 18:02:52.341441"
+  },
+  {
+    "user_id": "sophia",
+    "name": "Sophia Martinez",
+    "headline": "2nd-Year Biotech, UC Davis",
+    "verified_skill_vector": {
+      "Molecular Biology": {
+        "name": "Molecular Biology",
+        "intensity": 0.8,
+        "provenance": "UC Davis Transcript"
+      },
+      "Data Reporting": {
+        "name": "Data Reporting",
+        "intensity": 0.75,
+        "provenance": "UC Davis Transcript"
+      },
+      "Regulatory Compliance": {
+        "name": "Regulatory Compliance",
+        "intensity": 0.6,
+        "provenance": "UC Davis Transcript"
+      },
+      "Lab Protocols": {
+        "name": "Lab Protocols",
+        "intensity": 0.85,
+        "provenance": "UC Davis Transcript"
+      }
+    },
+    "last_synced": "2026-02-26 18:02:52.341538"
+  },
+  {
+    "user_id": "maya",
+    "name": "Maya Patel",
+    "headline": "11th Grader",
+    "verified_skill_vector": {
+      "Python": {
+        "name": "Python",
+        "intensity": 0.8,
+        "provenance": "GitHub Oracle"
+      },
+      "Agent Stewardship": {
+        "name": "Agent Stewardship",
+        "intensity": 0.7,
+        "provenance": "Dual Enrollment CC"
+      }
+    },
+    "last_synced": "2026-02-26 18:02:52.341540"
+  }
+]

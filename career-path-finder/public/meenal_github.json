@@ -1,0 +1,38 @@
+{
+    "login": "meenalp",
+    "name": "Meenal Pande",
+    "bio": "Backend Engineer building scalable systems. UC Berkeley EECS '24. Currently consulting for startups.",
+    "location": "San Francisco, CA",
+    "top_languages": {
+        "Go": 45.2,
+        "Python": 35.5,
+        "TypeScript": 10.3,
+        "C++": 9.0
+    },
+    "repositories": [
+        {
+            "name": "astra-queue",
+            "description": "A lightweight, distributed message queue written in Go with robust delivery guarantees.",
+            "language": "Go",
+            "stars": 142
+        },
+        {
+            "name": "aks-monitor-cli",
+            "description": "CLI tool for quick health checks of Azure Kubernetes Service clusters.",
+            "language": "Python",
+            "stars": 38
+        },
+        {
+            "name": "fast-telemetry",
+            "description": "High-throughput telemetry ingestion endpoint using Node.js and Redis streams.",
+            "language": "TypeScript",
+            "stars": 12
+        },
+        {
+            "name": "cs162-pintos",
+            "description": "UC Berkeley CS162 Operating Systems project. Implemented user programs, virtual memory, and file systems.",
+            "language": "C",
+            "stars": 5
+        }
+    ]
+}

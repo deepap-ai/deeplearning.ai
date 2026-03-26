@@ -1,0 +1,50 @@
+{
+    "profile": {
+        "id": "meenal-pande-1a2b3c",
+        "name": "Meenal Pande",
+        "headline": "Independent Software Consultant | Backend & Distributed Systems | Ex-Microsoft, Tencent",
+        "location": "San Francisco, California, United States",
+        "about": "Recent UC Berkeley EECS graduate specializing in scalable backend architectures and distributed systems. 2+ years of experience building high-throughput services via internships and consulting. Passionate about cloud infrastructure, DevOps pipelines, and writing clean, maintainable Go and Python code."
+    },
+    "experience": [
+        {
+            "company": "Self-Employed",
+            "title": "Independent Technical Consultant",
+            "startDate": "2024-10",
+            "endDate": "Present",
+            "description": "Architecting backend microservices for early-stage SaaS startups using Go, Docker, and PostgreSQL. Implementing full CI/CD deployment pipelines to streamline engineering velocity."
+        },
+        {
+            "company": "Microsoft",
+            "title": "Software Engineering Intern",
+            "startDate": "2023-05",
+            "endDate": "2023-08",
+            "description": "Developed internal dashboard tools to monitor Azure Kubernetes Service (AKS) cluster health. Built automated testing scripts in Python to improve platform reliability."
+        },
+        {
+            "company": "Tencent",
+            "title": "Software Engineering Intern",
+            "startDate": "2022-05",
+            "endDate": "2022-08",
+            "description": "Designed high-volume data ingestion pipelines for gaming telemetry using C++ and Node.js."
+        }
+    ],
+    "education": [
+        {
+            "school": "University of California, Berkeley",
+            "degree": "B.S. Electrical Engineering and Computer Sciences (EECS)",
+            "startDate": "2020",
+            "endDate": "2024"
+        }
+    ],
+    "skills": [
+        "Go",
+        "Python",
+        "Distributed Systems",
+        "Docker",
+        "PostgreSQL",
+        "Software Architecture",
+        "Cloud Computing (Azure)",
+        "API Development"
+    ]
+}
