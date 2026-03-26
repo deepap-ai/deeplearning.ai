@@ -6,6 +6,8 @@ import { ChevronRight, GraduationCap, Briefcase, Compass, User, Building2, Searc
 const PERSONA_STYLES: Record<string, { avatarBg: string; avatarBorder: string; avatarText: string }> = {
     'accent-green': { avatarBg: 'bg-accent-green/10', avatarBorder: 'border-accent-green/20', avatarText: 'text-accent-green' },
     'accent-blue': { avatarBg: 'bg-accent-blue/10', avatarBorder: 'border-accent-blue/20', avatarText: 'text-accent-blue' },
+    'accent-purple': { avatarBg: 'bg-purple-100', avatarBorder: 'border-purple-200', avatarText: 'text-purple-700' },
+    'accent-amber': { avatarBg: 'bg-amber-100', avatarBorder: 'border-amber-200', avatarText: 'text-amber-700' },
 };
 
 const initialPersonas = [
@@ -25,6 +27,24 @@ const initialPersonas = [
         goal: 'AI-Native Founder by 2034',
         initials: 'AC',
         color: 'accent-blue',
+        primary: true,
+    },
+    {
+        id: 'maya',
+        name: 'Maya Patel',
+        subtitle: '11th Grade, Palo Alto High School',
+        goal: 'UC Berkeley Admit — CS',
+        initials: 'MP',
+        color: 'accent-purple',
+        primary: true,
+    },
+    {
+        id: 'bert',
+        name: 'Bert Clark',
+        subtitle: '2nd-Year Culinary, Cal Poly SLO · Aspiring Chef',
+        goal: 'Executive Chef',
+        initials: 'BC',
+        color: 'accent-amber',
         primary: true,
     },
 ];
@@ -194,6 +214,8 @@ export default function Home() {
                                     onClick={() => {
                                         if (p.id === 'alex') navigate('/alex');
                                         else if (p.id === 'sophia') navigate('/sophia');
+                                        else if (p.id === 'maya') navigate('/maya');
+                                        else if (p.id === 'bert') navigate('/bert');
                                         else navigate(`/navigate/${p.id}`);
                                     }}
                                 >

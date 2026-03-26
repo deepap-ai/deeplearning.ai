@@ -10,6 +10,7 @@ from schemas import CandidateProfile, SkillNode
 from pathing_engine import get_persona, get_persona_routes, get_persona_graph
 from parsers import SkillsParserFactory
 from graph_integration import build_skills_graph
+from gap_engine import calculate_gap
 from jobhop_engine import get_graph
 
 MOCK_DIR = os.path.join(os.path.dirname(__file__), "mock_data")
@@ -282,6 +283,109 @@ def explore_role_stats(role: str = ""):
     if not data:
         raise HTTPException(status_code=404, detail=f"Role '{role}' not found")
     return data
+
+
+
+# ---------------------------------------------------------
+# Gap Analysis Endpoint (consolidated from api.py port 8001)
+# ---------------------------------------------------------
+from pydantic import BaseModel as PydanticBaseModel
+
+class GapAnalysisRequest(PydanticBaseModel):
+    candidate_vector: dict[str, float]
+    jd_vector: dict[str, float]
+
+@app.post("/api/gap-analysis")
+def run_gap_analysis(req: GapAnalysisRequest):
+    """Compute the delta between a candidate's verified vector and a JD vector."""
+    logging.info("[Gap Engine] Received gap analysis request")
+    result = calculate_gap(req.candidate_vector, req.jd_vector)
+    return result
+
+
+# ---------------------------------------------------------
+# Recruit Search Endpoint (consolidated from api.py port 8001)
+# ---------------------------------------------------------
+
+@app.get("/api/recruit/search")
+def search_talent(query: str = ""):
+    """Search the candidate database."""
+    import random
+    logging.info(f"[Recruit] Searching talent pool for: '{query}'")
+    candidates_path = os.path.join(MOCK_DIR, "candidates.json")
+    try:
+        with open(candidates_path, "r") as f:
+            candidates = json.load(f)
+    except FileNotFoundError:
+        candidates = []
+
+    # Deduplicate by canonical name
+    deduped = {}
+    for c in candidates:
+        canonical_name = (c.get("name") or "").lower().strip()
+        if canonical_name:
+            deduped[canonical_name] = c
+
+    results = list(deduped.values())
+
+    if not query:
+        return {"results": results}
+
+    query_lower = query.lower()
+    scored_results = []
+
+    for c in results:
+        score = 0
+        text_parts = [
+            str(c.get("name", "")).lower(),
+            str(c.get("headline", "")).lower()
+        ]
+        skills = c.get("verified_skill_vector", {})
+        for s in skills.keys():
+            text_parts.append(str(s).lower())
+        blob = " ".join(text_parts)
+
+        # High-signal keyword matching
+        for kw in ["agent", "cuda", "distributed systems", "biotech", "chef",
+                    "culinary", "food", "kitchen", "hospitality"]:
+            if kw in query_lower and kw in blob:
+                score += 10
+        if "react" in query_lower and "react" in blob:
+            score += 5
+        if "python" in query_lower and "python" in blob:
+            score += 5
+
+        # General substring matching for words > 3 chars
+        words = query_lower.replace(",", "").replace(".", "").split()
+        for w in words:
+            if len(w) > 3 and w in blob:
+                score += 1
+
+        if score > 0:
+            scored_results.append((score, c))
+
+    scored_results.sort(key=lambda x: x[0], reverse=True)
+
+    final_results = []
+    base_match = 96
+
+    for score, c in scored_results:
+        if "match_score" not in c:
+            c["match_score"] = max(70, base_match)
+            base_match -= random.randint(2, 6)
+        if "trust_score" not in c:
+            v_skills = c.get("verified_skill_vector", {})
+            v_count = sum(1 for s in v_skills.values()
+                         if isinstance(s, dict) and
+                         any(k in str(s.get("provenance", "")).lower()
+                             for k in ["github", "transcript", "verified", "practical"]))
+            ratio = v_count / max(1, len(v_skills))
+            c["trust_score"] = int(50 + (ratio * 45) + random.randint(1, 4))
+        if "signal_quality" not in c:
+            c["signal_quality"] = min(99, c["trust_score"] + random.randint(-5, 5))
+        final_results.append(c)
+
+    return {"results": final_results}
 
 
 # ---------------------------------------------------------

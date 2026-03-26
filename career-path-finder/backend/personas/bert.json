@@ -1,0 +1,217 @@
+{
+  "persona_id": "bert",
+  "name": "Bert Clark",
+  "type": "student",
+  "avatar_initials": "BC",
+  "school": "Cal Poly SLO",
+  "year": "2nd Year",
+  "age": 20,
+  "location": "San Luis Obispo, CA",
+  "ingestion_type": "transcript",
+  "courses": [
+    { "code": "FSN 230", "title": "Food Processing", "skills": ["Food Processing", "HACCP Standards"] },
+    { "code": "FSN 210", "title": "Sensory Evaluation of Foods", "skills": ["Sensory Evaluation", "Quality Assurance"] },
+    { "code": "FSN 310", "title": "Food Chemistry", "skills": ["Food Chemistry", "Molecular Gastronomy"] },
+    { "code": "HRM 240", "title": "Hospitality Cost Control", "skills": ["Cost Management", "Inventory Management"] },
+    { "code": "FSN 201", "title": "Pilot Plant Operations", "skills": ["Food Processing", "HACCP Standards", "Quality Assurance"] },
+    { "code": "HRM 110", "title": "Introduction to Hospitality", "skills": ["Kitchen Management", "Brigade Leadership"] }
+  ],
+  "current_skills": {
+    "Knife Skills": 0.75,
+    "Culinary Techniques": 0.70,
+    "Food Chemistry": 0.65,
+    "HACCP Standards": 0.72,
+    "Sensory Evaluation": 0.60,
+    "Cost Management": 0.55,
+    "Food Processing": 0.68,
+    "Brigade Leadership": 0.40,
+    "Menu Engineering": 0.35,
+    "Kitchen Management": 0.30,
+    "Farm-to-Table Sourcing": 0.50,
+    "Molecular Gastronomy": 0.45
+  },
+  "target_role": {
+    "title": "Executive Chef",
+    "company": "Fine Dining / R&D Kitchen",
+    "required_skills": {
+      "Knife Skills": 0.95,
+      "Culinary Techniques": 0.95,
+      "Food Chemistry": 0.85,
+      "HACCP Standards": 0.90,
+      "Sensory Evaluation": 0.85,
+      "Cost Management": 0.90,
+      "Menu Engineering": 0.90,
+      "Brigade Leadership": 0.95,
+      "Kitchen Management": 0.95,
+      "Farm-to-Table Sourcing": 0.80,
+      "Molecular Gastronomy": 0.75,
+      "Wine & Beverage Pairing": 0.70,
+      "Inventory Management": 0.85,
+      "ServSafe Certification": 0.90
+    }
+  },
+  "routes": [
+    {
+      "id": "fine_dining_track",
+      "label": "Fine Dining → Executive Chef",
+      "subtitle": "Michelin-starred mastery path",
+      "icon": "utensils",
+      "steps": [
+        {
+          "type": "experience",
+          "title": "Line Cook at Luna Red / Novo (SLO High-Volume)",
+          "duration": "Current – Summer 2026",
+          "skills_gained": { "Knife Skills": 0.10, "Culinary Techniques": 0.10, "Kitchen Management": 0.15 },
+          "year": "2026"
+        },
+        {
+          "type": "credential",
+          "title": "ServSafe Food Protection Manager Certification",
+          "duration": "Spring 2026",
+          "cost": "$175",
+          "skills_gained": { "HACCP Standards": 0.10, "ServSafe Certification": 0.70 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Stage at Michelin-starred restaurant (SF/LA — e.g., Quince, Vespertine)",
+          "duration": "Summer 2026",
+          "skills_gained": { "Culinary Techniques": 0.15, "Sensory Evaluation": 0.15, "Molecular Gastronomy": 0.20 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Sous Chef Internship — Ritz-Carlton or Four Seasons",
+          "duration": "Year 3–4",
+          "skills_gained": { "Kitchen Management": 0.30, "Brigade Leadership": 0.30, "Cost Management": 0.20, "Inventory Management": 0.50 },
+          "year": "2027–2028"
+        },
+        {
+          "type": "course",
+          "title": "Advanced Wine & Beverage Pairing (Court of Master Sommeliers Intro)",
+          "duration": "3 months",
+          "cost": "$600",
+          "skills_gained": { "Wine & Beverage Pairing": 0.50, "Menu Engineering": 0.15, "Sensory Evaluation": 0.10 },
+          "year": "2028"
+        },
+        {
+          "type": "role",
+          "title": "Executive Chef — Fine Dining Restaurant",
+          "salary": "$85,000–$120,000/yr",
+          "skills_gained": {},
+          "year": "2029"
+        }
+      ],
+      "total_time": "3–4 years",
+      "total_cost": "$2,500",
+      "arrival_probability": 55
+    },
+    {
+      "id": "rd_chef_track",
+      "label": "R&D Chef — Food Innovation",
+      "subtitle": "Leverage Cal Poly's food science labs",
+      "icon": "flask",
+      "steps": [
+        {
+          "type": "course",
+          "title": "Cal Poly Creamery & Pilot Plant — Advanced Food Production",
+          "duration": "Year 2–3",
+          "skills_gained": { "Food Processing": 0.15, "Food Chemistry": 0.15, "HACCP Standards": 0.10, "Molecular Gastronomy": 0.15 },
+          "year": "2026–2027"
+        },
+        {
+          "type": "experience",
+          "title": "Summer Internship — Beyond Meat / Impossible Foods (R&D Lab)",
+          "duration": "Summer 2027",
+          "skills_gained": { "Food Chemistry": 0.15, "Sensory Evaluation": 0.15, "Molecular Gastronomy": 0.15 },
+          "year": "2027"
+        },
+        {
+          "type": "credential",
+          "title": "Certified Food Scientist (CFS) — IFT Credential",
+          "duration": "Post-graduation",
+          "cost": "$400",
+          "skills_gained": { "HACCP Standards": 0.10, "ServSafe Certification": 0.60, "Food Chemistry": 0.10 },
+          "year": "2028"
+        },
+        {
+          "type": "experience",
+          "title": "Product Development Chef — CPG Company (e.g., Nestlé, General Mills)",
+          "duration": "2 years",
+          "skills_gained": { "Menu Engineering": 0.30, "Cost Management": 0.25, "Inventory Management": 0.40, "Farm-to-Table Sourcing": 0.15 },
+          "year": "2028–2030"
+        },
+        {
+          "type": "role",
+          "title": "R&D Chef — Food Innovation Lab",
+          "salary": "$90,000–$130,000/yr",
+          "skills_gained": {},
+          "year": "2030"
+        }
+      ],
+      "total_time": "4–5 years",
+      "total_cost": "$1,200",
+      "arrival_probability": 65
+    },
+    {
+      "id": "hospitality_management",
+      "label": "Hotel Executive Chef — Hospitality Track",
+      "subtitle": "Corporate kitchen leadership",
+      "icon": "building",
+      "steps": [
+        {
+          "type": "experience",
+          "title": "Banquet/Catering Cook — SLO Event Venues",
+          "duration": "Year 2–3",
+          "skills_gained": { "Culinary Techniques": 0.10, "Cost Management": 0.15, "Kitchen Management": 0.20 },
+          "year": "2026–2027"
+        },
+        {
+          "type": "credential",
+          "title": "ServSafe + TIPS Alcohol Certification",
+          "duration": "Summer 2027",
+          "cost": "$250",
+          "skills_gained": { "ServSafe Certification": 0.70, "Wine & Beverage Pairing": 0.20 },
+          "year": "2027"
+        },
+        {
+          "type": "experience",
+          "title": "Management Training Program — Marriott / Hilton",
+          "duration": "12–18 months",
+          "skills_gained": { "Kitchen Management": 0.30, "Brigade Leadership": 0.25, "Cost Management": 0.20, "Inventory Management": 0.45, "Menu Engineering": 0.25 },
+          "year": "2028–2029"
+        },
+        {
+          "type": "role",
+          "title": "Executive Chef — Hotel/Resort Property",
+          "salary": "$95,000–$140,000/yr",
+          "skills_gained": {},
+          "year": "2030"
+        }
+      ],
+      "total_time": "4 years",
+      "total_cost": "$750",
+      "arrival_probability": 70
+    }
+  ],
+  "alternatives": [
+    {
+      "title": "Corporate Executive Chef",
+      "company": "Google / Meta (Tech Campus Dining)",
+      "match": 82,
+      "gap_summary": "Strong fit — emphasis on volume cooking, menu innovation, and dietary accommodation at scale."
+    },
+    {
+      "title": "Food Scientist",
+      "company": "Nestlé R&D",
+      "match": 75,
+      "gap_summary": "Leverage food chemistry background — requires additional analytical chemistry and statistical design coursework."
+    },
+    {
+      "title": "Culinary Instructor",
+      "company": "Le Cordon Bleu / CIA",
+      "match": 68,
+      "gap_summary": "Needs 5+ years industry experience and teaching methodology certification."
+    }
+  ]
+}

@@ -40,7 +40,7 @@ export async function runGapAnalysis(
   jdVector: Record<string, number>
 ) {
   try {
-    const res = await fetch(`${API_BASE}/api/gap-analysis`, {
+    const res = await fetch(`${GPS_BASE}/api/gap-analysis`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

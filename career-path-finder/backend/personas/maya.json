@@ -1,0 +1,224 @@
+{
+  "persona_id": "maya",
+  "name": "Maya Patel",
+  "type": "student",
+  "avatar_initials": "MP",
+  "school": "Palo Alto High School",
+  "year": "11th Grade",
+  "age": 17,
+  "location": "Palo Alto, CA",
+  "ingestion_type": "transcript",
+  "courses": [
+    { "code": "AP CALC AB", "title": "AP Calculus AB", "skills": ["Mathematics", "Analytical Thinking"] },
+    { "code": "AP ENG LANG", "title": "AP English Language & Composition", "skills": ["Academic Writing", "Communication"] },
+    { "code": "AP USH", "title": "AP US History", "skills": ["Research Methods", "Critical Analysis"] },
+    { "code": "AP CS A", "title": "AP Computer Science A", "skills": ["Python", "Computational Thinking"] },
+    { "code": "CHEM H", "title": "Honors Chemistry", "skills": ["Scientific Reasoning", "Lab Techniques"] },
+    { "code": "PHYS H", "title": "Honors Physics", "skills": ["Mathematics", "Scientific Reasoning"] },
+    { "code": "JOURN 3", "title": "Advanced Journalism (The Campanile)", "skills": ["Communication", "Leadership"] },
+    { "code": "ROBOT", "title": "Robotics Engineering", "skills": ["Python", "Agent Stewardship", "Computational Thinking"] }
+  ],
+  "current_skills": {
+    "Python": 0.70,
+    "Agent Stewardship": 0.55,
+    "Mathematics": 0.80,
+    "Academic Writing": 0.75,
+    "Communication": 0.72,
+    "Scientific Reasoning": 0.65,
+    "Leadership": 0.60,
+    "Research Methods": 0.50,
+    "Community Service": 0.65,
+    "Computational Thinking": 0.68,
+    "Critical Analysis": 0.55,
+    "Lab Techniques": 0.40
+  },
+  "target_role": {
+    "title": "UC Berkeley Admit — Computer Science",
+    "company": "UC Berkeley",
+    "required_skills": {
+      "Mathematics": 0.95,
+      "Academic Writing": 0.90,
+      "Scientific Reasoning": 0.85,
+      "Leadership": 0.90,
+      "Community Service": 0.80,
+      "Research Methods": 0.80,
+      "Communication": 0.85,
+      "Python": 0.75,
+      "Computational Thinking": 0.85,
+      "Critical Analysis": 0.80,
+      "Standardized Testing": 0.70,
+      "PIQ Storytelling": 0.95
+    }
+  },
+  "routes": [
+    {
+      "id": "direct_admit",
+      "label": "Direct Admission — L&S CS",
+      "subtitle": "Letters & Science (Undeclared → CS)",
+      "icon": "graduation-cap",
+      "steps": [
+        {
+          "type": "course",
+          "title": "AP Exam Blitz — Maximize UC Weighted GPA",
+          "duration": "Spring 2026",
+          "skills_gained": { "Mathematics": 0.10, "Scientific Reasoning": 0.10, "Academic Writing": 0.10 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Summer STEM Research Internship (Stanford SIMR or UC Berkeley ATDP)",
+          "duration": "Summer 2026",
+          "skills_gained": { "Research Methods": 0.25, "Python": 0.10, "Scientific Reasoning": 0.10 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Science Olympiad Regional + State Competition",
+          "duration": "Fall 2026",
+          "skills_gained": { "Scientific Reasoning": 0.10, "Leadership": 0.15, "Critical Analysis": 0.10 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Personal Insight Questions (PIQs) — Narrative Development",
+          "duration": "Fall 2026",
+          "skills_gained": { "PIQ Storytelling": 0.70, "Communication": 0.10, "Academic Writing": 0.05 },
+          "year": "2026"
+        },
+        {
+          "type": "credential",
+          "title": "UC Application Submission — College of Letters & Science",
+          "duration": "November 2026",
+          "cost": "$70",
+          "skills_gained": { "Standardized Testing": 0.50 },
+          "year": "2026"
+        },
+        {
+          "type": "role",
+          "title": "UC Berkeley — L&S Undeclared (CS Intent)",
+          "salary": "Admitted",
+          "skills_gained": {},
+          "year": "2027"
+        }
+      ],
+      "total_time": "1.5 years",
+      "total_cost": "$2,500",
+      "arrival_probability": 45
+    },
+    {
+      "id": "engineering_path",
+      "label": "College of Engineering — EECS",
+      "subtitle": "Highest Reach, Maximum Rigor",
+      "icon": "rocket",
+      "steps": [
+        {
+          "type": "course",
+          "title": "Self-Study AP Physics C + AP Calculus BC",
+          "duration": "Spring–Summer 2026",
+          "skills_gained": { "Mathematics": 0.15, "Scientific Reasoning": 0.15, "Computational Thinking": 0.10 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Build Open Source Robotics Project (Verified GitHub Artifact)",
+          "duration": "Summer 2026",
+          "skills_gained": { "Python": 0.15, "Agent Stewardship": 0.20, "Computational Thinking": 0.15 },
+          "year": "2026"
+        },
+        {
+          "type": "experience",
+          "title": "Paly Robotics Team Captain + FIRST Robotics Competition",
+          "duration": "Fall 2026 – Spring 2027",
+          "skills_gained": { "Leadership": 0.25, "Computational Thinking": 0.10, "Communication": 0.10 },
+          "year": "2026–2027"
+        },
+        {
+          "type": "experience",
+          "title": "PIQs — Engineering Leadership Narrative",
+          "duration": "Fall 2026",
+          "skills_gained": { "PIQ Storytelling": 0.80, "Communication": 0.05, "Academic Writing": 0.05 },
+          "year": "2026"
+        },
+        {
+          "type": "credential",
+          "title": "UC Application — College of Engineering (EECS)",
+          "duration": "November 2026",
+          "cost": "$70",
+          "skills_gained": { "Standardized Testing": 0.50 },
+          "year": "2026"
+        },
+        {
+          "type": "role",
+          "title": "UC Berkeley — EECS Major",
+          "salary": "Admitted",
+          "skills_gained": {},
+          "year": "2027"
+        }
+      ],
+      "total_time": "1.5 years",
+      "total_cost": "$1,500",
+      "arrival_probability": 25
+    },
+    {
+      "id": "community_college",
+      "label": "CC Transfer Pathway — TAG Guarantee",
+      "subtitle": "Lower Risk, Guaranteed Path",
+      "icon": "shield-dollar",
+      "steps": [
+        {
+          "type": "degree",
+          "title": "Finish Senior Year at Paly — Strong GPA Finish",
+          "duration": "1 year",
+          "skills_gained": { "Mathematics": 0.10, "Academic Writing": 0.05, "Leadership": 0.10 },
+          "year": "2026–2027"
+        },
+        {
+          "type": "degree",
+          "title": "Foothill or De Anza College — CS Transfer Pathway",
+          "duration": "2 years",
+          "cost": "$2,400",
+          "skills_gained": { "Python": 0.20, "Mathematics": 0.15, "Computational Thinking": 0.20, "Research Methods": 0.15 },
+          "year": "2027–2029"
+        },
+        {
+          "type": "credential",
+          "title": "UC Transfer Admission Guarantee (TAG) Application",
+          "duration": "Fall 2029",
+          "cost": "$70",
+          "skills_gained": { "PIQ Storytelling": 0.60, "Standardized Testing": 0.40 },
+          "year": "2029"
+        },
+        {
+          "type": "role",
+          "title": "UC Berkeley — L&S CS (Transfer Student)",
+          "salary": "Admitted",
+          "skills_gained": {},
+          "year": "2029"
+        }
+      ],
+      "total_time": "3 years",
+      "total_cost": "$2,470",
+      "arrival_probability": 78
+    }
+  ],
+  "alternatives": [
+    {
+      "title": "Computer Science Major",
+      "company": "UCLA",
+      "match": 72,
+      "gap_summary": "Strong match — UCLA values leadership and community service"
+    },
+    {
+      "title": "Data Science Major",
+      "company": "UC San Diego",
+      "match": 85,
+      "gap_summary": "Excellent fit — strengthen statistics and data analysis coursework"
+    },
+    {
+      "title": "Computer Science Major",
+      "company": "Cal Poly SLO",
+      "match": 90,
+      "gap_summary": "High admit probability — practical CS focus aligns with robotics background"
+    }
+  ]
+}
